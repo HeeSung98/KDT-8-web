@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="./example.css" />
+    <meta charset="UTF-8" />
+    <title>230705</title>
+    <style>
+      /* p {
+        font-size: 40px;
+        margin: 0;
+        line-height: 50px;
+      } */
+
+      * {
+        color: gray;
+      }
+
+      li {
+        color: rebeccapurple;
+      }
+
+      /* span {
+        background-color: aquamarine;
+      } */
+
+      .orange {
+        color: rgb(225, 182, 104);
+      }
+
+      #orange {
+        color: rgb(255, 149, 0);
+      }
+
+      span.orange {
+        color: red;
+      }
+
+      ul > .orange {
+        background-color: gray;
+      }
+
+      ul .orange {
+        font-weight: bold;
+      }
+
+      /* orange 클래스 이후 하나의 li */
+      .orange + li {
+        font-size: 30px;
+      }
+
+      /* orange 클래스 이후의 모든 li */
+      .orange ~ li {
+        color: green;
+      }
+
+      /* 마우스 커서가 위에 올라갈 때 */
+      a:hover {
+        color: red;
+      }
+
+      /* 해당 링크를 좌클릭중일 때 */
+      a:active {
+        background-color: black;
+        color: white;
+      }
+
+      /* 포커스중일 때 */
+      input:focus {
+        background-color: lightgray;
+      }
+
+      /* fruits의 첫 번째 요소가 span이면 */
+      .fruits span:first-child {
+        color: red;
+      }
+
+      .fruits div:first-child {
+        color: red;
+      }
+
+      /* frutis의 마지막 요소가 h3이면 */
+      .fruits h3:last-child {
+        text-decoration: underline;
+      }
+
+      .fruits p:last-child {
+        color: green;
+      }
+
+      /* fruites의 어떤 요소든 두 번째 자식이라면 */
+      .fruits *:nth-child(2) {
+        color: green;
+      }
+
+      .fruits *:not(span) {
+        background-color: aquamarine;
+      }
+
+      .fruits::before {
+        content: "앞에 글자 넣기";
+      }
+
+      .fruits::after {
+        content: "뒤에 글자 넣기";
+      }
+
+      input[disabled] {
+        background-color: black;
+      }
+
+      input[readonly] {
+        background-color: aquamarine;
+      }
+      input[type="password"] {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div style="background-color: antiquewhite"><p>1</p></div>
+    <div>
+      <p style="font-size: 30px">2</p>
+    </div>
+    <div><p>3</p></div> -->
+
+    <div>
+      <ul>
+        <li>사과</li>
+        <li>딸기</li>
+        <li id="orange" class="orange">오렌지1</li>
+        <li>망고</li>
+        <li>포도</li>
+        <p><span class="orange">오렌지2</span></p>
+      </ul>
+      <div>당근</div>
+      <p>토마토</p>
+      <span class="orange">오렌지</span>
+      <p>파인애플</p>
+    </div>
+    <a href="http://naver.com">네이버</a><br />
+    <input type="text" /><br /><br />
+    <div class="fruits">
+      <br />
+      <span>딸기</span>
+      <span>수박</span>
+      <div>오렌지</div>
+      <p>망고</p>
+      <h3>사과</h3>
+    </div>
+    <br />
+    <input type="text" disabled value="1" /><br />
+    <input type="text" readonly value="1" /><br />
+    <input type="password" name="" id="" />
+  </body>
+</html>
