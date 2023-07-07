@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>실습5</title>
+    <style>
+      .container {
+        width: 500px;
+        height: 500px;
+        display: flex;
+        background-color: antiquewhite;
+      }
+      .div1 {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+      }
+      .div2 {
+        background-color: green;
+        width: 100px;
+        height: 100px;
+      }
+      .div3 {
+        background-color: blue;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="div1"></div>
+      <div class="div2"></div>
+      <div class="div3"></div>
+    </div>
+    <br />
+    <div
+      class="container"
+      style="flex-direction: row-reverse; position: static; top: 400px"
+    >
+      <div class="div1"></div>
+      <div class="div2"></div>
+      <div class="div3"></div>
+    </div>
+    <br />
+    <div class="container" style="flex-direction: column">
+      <div class="div1"></div>
+      <div class="div2"></div>
+      <div class="div3"></div>
+    </div>
+  </body>
+</html>

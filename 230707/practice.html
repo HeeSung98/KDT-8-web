@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+      }
+      .item1 {
+        background-color: blue;
+        right: 20px;
+      }
+      .item2 {
+        background-color: aquamarine;
+        left: 40px;
+      }
+      .item3 {
+        background-color: skyblue;
+        top: 30px;
+      }
+
+      .parent {
+        position: relative;
+      }
+      .circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+      }
+      .circle1 {
+        background-color: #9afaff;
+        top: 0;
+        left: 200px;
+        z-index: 1;
+      }
+      .circle2 {
+        background-color: #84ff8d;
+        top: 0;
+        left: 150px;
+        z-index: 2;
+      }
+      .circle3 {
+        background-color: #ffeb88;
+        top: 0;
+        left: 100px;
+      }
+      .circle4 {
+        background-color: #ffb680;
+        top: 0;
+        left: 50px;
+      }
+      .circle5 {
+        top: 0;
+        left: 0;
+        background-color: #ff7c7c;
+      }
+
+      .container {
+        width: 300px;
+        height: 300px;
+        background-image: url(https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb861f604e7b0e6900f9ac53a43965300eb9a);
+        background-color: aquamarine;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      .div1 {
+        background-color: red;
+      }
+      .div2 {
+        background-color: green;
+      }
+      .div3 {
+        background-color: blue;
+      }
+
+      .container2 {
+        width: 500px;
+        height: 500px;
+        background-color: antiquewhite;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="item1"></div>
+    <div class="item2"></div>
+    <div class="item3"></div>
+    <br />
+    <div class="parent">
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle3"></div>
+      <div class="circle circle4"></div>
+      <div class="circle circle5"></div>
+    </div>
+    <div class="container" style="width: 100px; background-size: contain"></div>
+    <br />
+    <div class="container" style="height: 100px; background-size: cover"></div>
+    <br />
+    <div class="container2">
+      <div class="div1"></div>
+      <div class="div2"></div>
+      <div class="div3"></div>
+      <div class="div1"></div>
+      <div class="div2"></div>
+      <div class="div3"></div>
+    </div>
+  </body>
+</html>

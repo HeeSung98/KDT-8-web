@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>실습4</title>
+    <style>
+      .container {
+        width: 800px;
+        height: 500px;
+        background-image: url(https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb861f604e7b0e6900f9ac53a43965300eb9a);
+        background-color: aquamarine;
+        background-position: center;
+      }
+      .no1 {
+        background-repeat: repeat-x;
+      }
+      .no2 {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position-x: 100px;
+        background-position-y: 30px;
+      }
+      .no3 {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position-x: -15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container no1"></div>
+    <br />
+    <div class="container no2"></div>
+    <br />
+    <div class="container no3"></div>
+    <br />
+  </body>
+</html>

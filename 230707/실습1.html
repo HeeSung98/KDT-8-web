@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>실습1</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+      }
+      .item1 {
+        background-color: blue;
+        left: 50px;
+        top: 30px;
+        position: relative;
+      }
+      .item2 {
+        background-color: aquamarine;
+        position: absolute;
+        right: 30px;
+        bottom: 100px;
+      }
+      .item3 {
+        background-color: skyblue;
+        right: 100px;
+        top: 100px;
+        position: fixed;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        width: 500px;
+        height: 500px;
+        background-color: black;
+        position: relative;
+      "
+    >
+      <div class="item1"></div>
+      <div class="item2"></div>
+      <div class="item3"></div>
+    </div>
+  </body>
+</html>
