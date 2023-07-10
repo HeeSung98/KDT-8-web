@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+      }
+      div:hover {
+        /* translate: 100px 50px;
+        transform: scale(2);
+        transform: rotateX(45deg);
+        transform: skew(50deg); */
+        width: 300px;
+        height: 300px;
+      }
+      img:hover {
+        transform: rotateY(180deg);
+        backface-visibility: hidden;
+      }
+      @keyframes my {
+        0% {
+          left: 0px;
+          top: 0px;
+        }
+        25% {
+          left: 100px;
+          top: 0px;
+        }
+        50% {
+          left: 200px;
+          top: 0px;
+        }
+        75% {
+          left: 100px;
+          top: 0px;
+        }
+        100% {
+          left: 0px;
+          top: 0px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        background-color: red;
+        transition-property: all;
+        transition-duration: 2s;
+        transition-timing-function: ease;
+        transition-delay: 0.5s;
+      "
+    ></div>
+    <br />
+
+    <img src="../230704/dog.jpeg" style="width: 200px" />
+    <br />
+
+    <div
+      style="
+        background-color: aquamarine;
+        position: relative;
+        animation-name: my;
+        animation-duration: 2s;
+        animation-iteration-count: 3;
+        animation-timing-function: ease;
+        animation-delay: 1s;
+      "
+    ></div>
+  </body>
+</html>
