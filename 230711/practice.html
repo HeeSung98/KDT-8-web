@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <script>
+    let hello = '안녕하세요?!!'
+    console.log(hello)
+    console.log(hello)
+    console.log(hello)
+
+    const name = '길동'
+    console.log(hello + name + '님!')
+    console.log(`${hello}${name}님!!`)
+
+    console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+    let colors = ['r', 'g', 'b']
+    console.log(colors)
+    console.log(`색상: ${colors}`)
+
+    let list = [1, 2, 3, 4, 5, 6]
+    console.log(list[1])
+    console.log(list.length)
+
+    list.push(7)
+    console.log(list)
+    list.pop()
+    console.log(list)
+
+    let a = '1'
+    let b = 10
+    console.log(a + b)
+    console.log(typeof b)
+    console.log(typeof String(b))
+
+    // let math = Number(prompt('수학 점수를 입력하세요'))
+    // let eng = Number(prompt('영어 점수를 입력하세요'))
+    // let avg = (math + eng) / 2
+    // console.log(avg)
+
+    function helloFunction(name, age) {
+      console.log(name + '님 안녕하세요!')
+      console.log(age + '세')
+
+      return name + age
+    }
+
+    function test() {
+      alert('버튼을 클릭했습니다')
+    }
+
+    function test2(obj) {
+      console.log(obj)
+    }
+  </script>
+  <body>
+    <button onclick="test()">클릭테스트</button>
+    <input type="text" value="test" onkeydown="test2" />
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>실습8</title>
+    <script>
+      age = Number(prompt('나이를 입력하세요'))
+      gender = prompt('성별을 입력하세요')
+      console.log('입력한 나이는', age + '입니다.')
+      console.log('입력한 성별은', gender + '입니다.')
+      if (age >= 20) {
+        if (gender == '남자') {
+          console.log('성인 남성')
+        } else {
+          console.log('성인 여성')
+        }
+      } else if (age >= 17) {
+        if (gender == '남자') {
+          console.log('남자 고등학생')
+        } else {
+          console.log('여자 고등학생')
+        }
+      } else if (age >= 14) {
+        if (gender == '남자') {
+          console.log('남자 중학생')
+        } else {
+          console.log('여자 중학생')
+        }
+      } else if (age >= 8) {
+        if (gender == '남자') {
+          console.log('남자 초등학생')
+        } else {
+          console.log('여자 초등학생')
+        }
+      } else {
+        if (gender == '남자') {
+          console.log('남아')
+        } else {
+          console.log('여아')
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

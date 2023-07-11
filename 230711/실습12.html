@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>실습12</title>
+    <script>
+      var i = Number(0)
+      let sum = Number(0)
+      while (1) {
+        i++
+        if (i == 100) {
+          break
+        }
+        if (i % 2 == 0 || i % 3 == 0) {
+          sum = sum + i
+        }
+      }
+      console.log(sum)
+      sum = 0
+      for (var i = 0; i < 100; i++) {
+        if (i % 2 == 0 || i % 3 == 0) {
+          sum = sum + i
+        }
+      }
+      console.log(sum)
+    </script>
+  </head>
+  <body></body>
+</html>

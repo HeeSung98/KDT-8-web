@@ -4,12 +4,6 @@
     <meta charset="UTF-8" />
     <title>Document</title>
     <style>
-      div p {
-        width: 200px;
-        height: 200px;
-        background-color: beige;
-        text-align: center;
-      }
       p {
         font-weight: 100;
         font-size: 50px;
@@ -23,15 +17,19 @@
       }
       span {
         background-color: lightblue;
-        display: inline-block;
-        width: 100px;
-        height: 100px;
       }
       h1 {
         background-color: yellow;
       }
       button:hover {
         border: 5px solid red;
+      }
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: beige;
+        text-align: center;
+        display: inline-block;
       }
     </style>
   </head>
@@ -40,23 +38,29 @@
       <p>p태그</p>
     </div>
     <a href="http://naver.com">naver</a><br /><br />
+    <span style="width: 100px; height: 100px">span 크기지정</span>
     <span>span</span>
-    <span>span</span>
+    <h1 style="width: 300px">h1 크기지정</h1>
     <h1>h1</h1>
-    <h1>h1</h1>
-    <div>
-      <div></div>
-    </div>
-    <div
-      style="width: 200px; height: 200px; background-color: red; margin: 0"
-    ></div>
+    <br />
+    <div></div>
+    <div style="background-color: red; margin: 0"></div>
     <br />
     <button style="padding: 19px">버튼</button><br /><br />
     <div
       style="width: calc(100vw - 200px); background-color: red; height: 300px"
-    ></div><br><br>
+    ></div>
+    <br /><br />
     <div
-      style="width: 200px; height: 200px; background-color: red; margin: 0; overflow: auto"
-    >dddjdjfdsfjoawjgtioewjtgolzsjfiojsof</div>
+      style="
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin: 0;
+        overflow: auto;
+      "
+    >
+      dddjdjfdsfjoawjgtioewjtgolzsjfiojsof
+    </div>
   </body>
 </html>
