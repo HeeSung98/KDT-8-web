@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script>
+      let str = ' string method test '
+      console.log('length: ' + str.length)
+
+      console.log('toUpperCase: ' + str.toUpperCase())
+
+      console.log('indexOf: ' + str.indexOf('e'))
+      console.log('lastIndexOf: ' + str.lastIndexOf('e'))
+
+      console.log('slice: ' + str.slice(0, 6))
+
+      console.log('replace: ' + str.replace('s', 'S'))
+
+      console.log('repeat:' + str.repeat(3))
+
+      console.log('split: ' + str.split(''))
+      console.log('split: ' + str.split(' '))
+      console.log('split: ' + str.split('e'))
+
+      console.log('trim: ' + str.trim())
+
+      console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+      let arr = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+
+      console.log('length: ' + arr.length)
+
+      console.log('push: ' + arr.push('push'))
+      let pushResult = arr.push('a', 'b')
+      console.log('pushResult: ' + pushResult)
+      console.log('arr: ' + arr)
+
+      console.log('pop: ' + arr.pop())
+      let popResult = arr.pop()
+      console.log('popResult: ' + popResult)
+      console.log('pop: ' + arr.pop())
+      console.log('arr: ' + arr)
+
+      console.log('unshift: ' + arr.unshift('x', 'y'))
+      let unshiftResult = arr.unshift('z')
+      console.log('unshiftResult: ' + unshiftResult)
+
+      console.log('shift: ' + arr.shift())
+      console.log('shift: ' + arr.shift())
+      let shiftResult = arr.shift()
+      console.log('shiftResult: ' + shiftResult)
+      console.log('arr: ' + arr)
+
+      console.log('indexOf: ' + arr.indexOf('T'))
+      console.log('indexOf: ' + arr.indexOf('K'))
+      console.log('indexOf: ' + arr.indexOf('T', 3)) // 3번째 인덱스부터 탐색
+
+      console.log('includes: ' + arr.includes('S'))
+
+      console.log('reverse: ' + arr.reverse())
+
+      console.log('join: ' + arr.join())
+      console.log('join: ' + arr.join('&'))
+      console.log('join: ' + arr.join(' '))
+
+      let arrDeep = [...arr]
+      let arrShallow = arr
+
+      console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+      str = 'Holiday'
+      let a = str.split('')
+      console.log('a: ' + a)
+      let b = a.reverse()
+      console.log('b: ' + b)
+      let c = b.join('')
+      console.log('c: ' + c)
+
+      console.log('methodChaining: ' + str.split('').reverse().join(''))
+
+      console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+      for (let data of arr) {
+        console.log('data: ' + data)
+      }
+
+      console.log(
+        arr.filter(function (result) {
+          return result == 'S'
+        })
+      )
+
+      console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+      let date = new Date() // 밀리세컨드 단위
+      console.log(Date.now()) // 기준 시간(1970 01 01 00:00)에서부터 지난 밀리세컨드
+      console.log(date.getTime()) // 기준 시간(1970 01 01 00:00)에서부터 지난 밀리세컨드
+      console.log(date)
+      console.log(date.getFullYear())
+      console.log(date.getMonth() + 1)
+      console.log(date.getDate())
+      console.log(date.getHours())
+      console.log(date.getMinutes())
+      console.log(date.getSeconds())
+
+      console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+      console.log(Math.PI)
+      console.log(Math.E)
+      console.log(Math.SQRT2)
+
+      console.log('min: ' + Math.min(1, 2, 3, 0, -5))
+      console.log('max: ' + Math.max(1, 2, 3, 0, -5))
+      console.log('random: ' + parseInt(Math.random() * 10 + 1))
+      console.log('round: ' + Math.round(-1.8))
+      console.log('floor: ' + Math.floor(-1.9))
+      console.log('ceil: ' + Math.ceil(-1.9))
+
+      console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+      console.log(document.querySelector('div')) // 위에서부터 선택자에 일치하는 요소 하나를 가져옴
+    </script>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+      }
+      .div1 {
+        background-color: red;
+      }
+      .div2 {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div1" id="idTest"></div>
+    <br />
+    <input type="button" value="작성" onclick="write()" />
+  </body>
+  <script>
+    console.log(document.querySelector('div'))
+    console.log(document.querySelectorAll('.div2'))
+    console.log(document.getElementsByClassName('div2'))
+    console.log(document.getElementById('idTest'))
+  </script>
+</html>
