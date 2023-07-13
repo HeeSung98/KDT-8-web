@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>실습3</title>
+  </head>
+  <body>
+    작성자: <input type="text" id="writer" /><br /><br />
+    내용: <input type="text" id="content" /><br /><br />
+    <button onclick="add()">작성</button><br /><br />
+    <table id="guest_book" border="1">
+      <tr>
+        <th>번호</th>
+        <th style="width: 100px">작성자</th>
+        <th style="width: 300px">내용</th>
+        <th style="width: 150px">작성일</th>
+      </tr>
+    </table>
+  </body>
+  <script>
+    let writer = document.getElementById('writer')
+    let content = document.getElementById('content')
+    let guest_book = document.getElementById('guest_book')
+    let no = 1
+
+    function add() {
+      let tr = document.createElement('tr')
+      let tdNo = document.createElement('td')
+      let tdWriter = document.createElement('td')
+      let tdContent = document.createElement('td')
+      let tdDate = document.createElement('td')
+      let date = new Date()
+
+      tdNo.innerText = no++
+      tr.append(tdNo)
+
+      tdWriter.innerText = writer.value
+      tr.append(tdWriter)
+      writer.value = ''
+
+      tdContent.innerText = content.value
+      tr.append(tdContent)
+      content.value = ''
+
+      let minut =
+        date.getMinutes() > 10 ? date.getMinutes() : '0' + date.getMinutes()
+      tdDate.innerText =
+        date.getFullYear() +
+        '-' +
+        (date.getMonth() + 1) +
+        '-' +
+        date.getDate() +
+        '  ' +
+        date.getHours() +
+        ':' +
+        minut
+      tr.append(tdDate)
+
+      guest_book.append(tr)
+    }
+  </script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>실습2</title>
+  </head>
+  <body>
+    value1: <input type="text" id="val1" /><br /><br />
+    value2: <input type="text" id="val2" /><br /><br />
+    operater: <input type="text" id="op" /><br /><br />
+    result:
+    <textarea name="" id="res" cols="30" rows="1" readonly></textarea
+    ><br /><br />
+    <button onclick="result()">계산하기</button>
+    <button onclick="reset()">초기화</button>
+  </body>
+  <script>
+    let val1 = document.getElementById('val1')
+    let val2 = document.getElementById('val2')
+    let op = document.getElementById('op')
+    let res = document.getElementById('res')
+
+    function result() {
+      let n1 = Number(val1.value)
+      let n2 = Number(val2.value)
+      switch (op.value) {
+        case '+':
+          res.value = n1 + n2
+          console.log(res.value)
+          break
+        case '-':
+          res.value = n1 - n2
+          console.log(res.value)
+          break
+      }
+    }
+
+    function reset() {
+      val1.value = ''
+      val2.value = ''
+      op.value = ''
+      res.value = ''
+    }
+  </script>
+</html>

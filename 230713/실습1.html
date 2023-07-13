@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습1</title>
+    <style>
+      div div {
+        width: 100px;
+        height: 100px;
+        border: 1px;
+        background-color: yellow;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="input" />
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li id="li">3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+
+    <button onclick="createNode()">createNode</button>
+    <br />
+    <button onclick="appendNode()">appendNode</button>
+    <br />
+    <button onclick="appendChildNode()">appendChildNode</button>
+    <br />
+    <button onclick="prependNode()">prependNode</button>
+    <br />
+    <button onclick="beforeNode()">beforeNode</button>
+    <br />
+    <button onclick="afterNode()">afterNode</button>
+    <br />
+    <button onclick="removeNode()">removeNode</button>
+    <br />
+    <button onclick="removeChildNode()">removeChildNode</button>
+    <br />
+  </body>
+  <script>
+    let ul = document.querySelector('ul')
+    let li3 = document.getElementById('li')
+    let input = document.getElementById('input')
+
+    function createNode() {
+      let li = document.createElement('li')
+      li.innerText = '새로 추가된 리스트'
+      console.log('li: ', li)
+    }
+    function appendNode() {
+      li = document.createElement('li')
+      value = input.value
+      li.innerText = value
+
+      ul.append(li, '케케켁') // 태그 요소 및 문자열 가능
+    }
+    function appendChildNode() {
+      li = document.createElement('li')
+      value = input.value
+      li.innerText = value
+
+      ul.appendChild(li) // 태그 요소만 가능
+    }
+    function prependNode() {
+      li = document.createElement('li')
+      value = input.value
+      li.innerText = value
+
+      ul.prepend(li, '케케켁')
+    }
+    function beforeNode() {
+      li = document.createElement('li')
+      value = input.value
+      li.innerText = value
+
+      li3.before(li)
+    }
+    function afterNode() {
+      li = document.createElement('li')
+      value = input.value
+      li.innerText = value
+
+      li3.after(li)
+    }
+    function removeNode() {
+      li3.remove()
+    }
+    function removeChildNode() {
+      ul.removeChild(li3)
+    }
+  </script>
+</html>

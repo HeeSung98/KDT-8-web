@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script>
+      console.log(document.querySelector('div')) // 문서의 위에서부터 선택자에 일치하는 요소 하나를 가져옴
+    </script>
+    <style>
+      div {
+      }
+      .div1 {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+      }
+      .div2 {
+        background-color: blue;
+        width: 100px;
+        height: 100px;
+      }
+      #idTest {
+        background-color: green;
+        width: 100px;
+        height: 100px;
+      }
+      .d-none {
+        display: none;
+      }
+      button {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div1" name="userName"></div>
+    <div class="div2" name="userName"></div>
+    <div class="div1"></div>
+    <div class="div2" id="idTest"></div>
+    <div class="div1" id="idTest"></div>
+    <div id="compare">
+      <div>치킨</div>
+      <span>피자</span>
+    </div>
+    <br />
+    <input type="button" value="작성" onclick="write()" /><br /><br />
+    <a href="http://google.com" id="google" google>Google</a><br /><br />
+
+    <div id="container">
+      <div class="box" id="green">1</div>
+      previous 테스트
+      <div class="box" id="red" style="background-color: red">2</div>
+      next 테스트
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+    </div>
+    <br /><br />
+    <button onclick="getParent()">getParentNodes</button><br /><br />
+    <button onclick="pSibling()">previousSibling</button>
+    <button onclick="pESibling()">previousElementSibling</button>
+    <br /><br />
+    <button onclick="nSibling()">nextSibling</button>
+    <button onclick="nESibling()">nextElementSibling</button><br /><br />
+  </body>
+  <script>
+    console.log(document.getElementsByClassName('div2'))
+    console.log(document.getElementById('idTest'))
+    console.log(document.getElementsByTagName('div'))
+    console.log(document.getElementsByName('userName'))
+
+    console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+    console.log(document.querySelector('div'))
+    console.log(document.querySelector('#idTest'))
+    console.log(document.querySelector('.div2'))
+    console.log(document.querySelectorAll('.div2'))
+
+    console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+    let result = document.getElementById('compare')
+    let result_children = result.children
+    let result_childNodes = result.childNodes
+    console.log(result_children)
+    // HTMLCollection: 요소 노드와 태그 요소만 포함한다. 현재 코드 전체에서 동적으로 가져옴.
+    // 실제 배열이 아니기 때문에 forEach를 사용할 수 없음. index 및 nodeItem()을 통해 접근
+    console.log(result_childNodes)
+    // NodeList: 요소 노드, 텍스트 노드 등을 모두 포함한다. 코드를 읽을 때 문서 상태에서 가져온 그대로 고정
+    // 배열이기 때문에 forEach를 사용할 수 있음. 오직 index로 접근
+
+    console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+    // result.textContent = '1. 텍스트를 추가합니다 공백과 함께.'
+    // result.innerText = '2. 텍스트를 추가합니다 공백과 함께.'
+    console.log(result_children)
+    console.log(result_childNodes)
+
+    console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+    let google = document.getElementById('google')
+    console.log('google: ' + google)
+    console.log('google.href: ' + google.href)
+    google.href = 'http://naver.com'
+    console.log('google.href: ' + google.href)
+    google.setAttribute('href', 'http://google.com')
+    console.log('google.href: ' + google.href)
+
+    google.style.color = 'red'
+    google.style.border = '1px solid black'
+    google.style = 'background-color: yellow;'
+
+    console.log('classList: ', google.classList)
+    google.classList.add('d-none')
+    google.classList.add('box')
+    google.classList.remove('box')
+    console.log(google.classList.contains('d-none'))
+    // google.classList.toggle('d-none') // d-none이 존재하면 제거, 존재하지 않으면 추가
+
+    console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+    let container = document.getElementById('container')
+    let redDiv = document.getElementById('red')
+
+    function getParent() {
+      console.log(container.parentNode)
+    }
+    function pSibling() {
+      console.log(redDiv.previousSibling)
+    }
+    function pESibling() {
+      console.log(redDiv.previousElementSibling)
+    }
+    function nSibling() {
+      console.log(redDiv.nextSibling)
+    }
+    function nESibling() {
+      console.log(redDiv.nextElementSibling)
+    }
+  </script>
+</html>
