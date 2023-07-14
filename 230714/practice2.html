@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function append() {
+        let li = document.createElement('li')
+        // li.innerText = 'append된 친구'
+        // document.querySelector('ul').append(li)
+        $(li).text('jquery로 내용 채우기')
+        $('ul').append(li)
+      }
+
+      function prepend() {
+        let li = document.createElement('li')
+
+        $(li).text('jquery로 내용 채우기')
+        $('ul').prepend(li)
+      }
+
+      function before() {
+        let li = document.createElement('li')
+        // li.innerText = 'before된 친구'
+        // document.querySelector('#li2').before(li)
+        $(li).text('jquery로 내용 채우기')
+        $('#li2').before(li)
+      }
+
+      function after() {
+        let li = document.createElement('li')
+        // li.innerText = 'before된 친구'
+        // document.querySelector('#li2').before(li)
+        $(li).text('jquery로 내용 채우기')
+        $('#li2').after(li)
+      }
+
+      function removeElement() {
+        $('ul').remove()
+      }
+
+      function emptyElement() {
+        $('ul').empty()
+      }
+
+      function findParent() {
+        console.log($('.child2').parent())
+      }
+
+      function findParents() {
+        console.log($('.child2').parents())
+      }
+
+      function findNext() {
+        console.log($('.child2').next())
+      }
+
+      function findPrev() {
+        console.log($('.child2').prev())
+      }
+
+      function findChildren() {
+        console.log($('.child2').children())
+      }
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li id="li2">2</li>
+      <li id="'li3">3</li>
+    </ul>
+
+    <button onclick="append()">append</button>
+    <button onclick="prepend()">prepend</button>
+    <button onclick="before()">before</button>
+    <button onclick="after()">after</button>
+    <button onclick="search()">search</button>
+    <button onclick="removeElement()">removeElement</button>
+    <button onclick="emptyElement()">emptyElement</button>
+
+    <hr />
+    <h5>요소 탐색</h5>
+    <div class="ancestor">
+      <div class="parent">
+        <div class="child1">자식1</div>
+        <div class="child2">자식2</div>
+        글자를낑겨넣으면
+        <div class="child3">자식3</div>
+      </div>
+    </div>
+    <br />
+    <button onclick="findParent()">findParent</button>
+    <button onclick="findParents()">findParents</button>
+    <button onclick="findNext()">findNext</button>
+    <button onclick="findPrev()">findPrev</button>
+    <button onclick="findChildren()">findChildren</button>
+  </body>
+</html>

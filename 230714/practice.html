@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // $(선택자).함수();
+      // $? $(선택자).함수();
+      // $() : parameter로 선택자를 전달받아 특정 HTML 요소를 선택한다. -> 선택된 요소는 jquery 객체
+      // 함수 : jquery 메소드
+
+      function changeText() {
+        $('div').text('<b>jquery 사용 후</b>')
+      }
+    </script>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+      }
+      .div1 {
+        background-color: red;
+      }
+      .div2 {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="http://naver.com">naver</a>
+    <input type="text" id="input" />
+    <div class="div1"></div>
+    <div class="div2"></div>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+      integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
+      crossorigin="anonymous"
+    ></script>
+    <title>실습2</title>
+    <style>
+      div {
+        width: 700px;
+        height: 600px;
+        background-color: antiquewhite;
+      }
+      .red {
+        background-color: red;
+      }
+      .orange {
+        background-color: orange;
+      }
+      .yellow {
+        background-color: yellow;
+      }
+      .green {
+        background-color: green;
+      }
+      .blue {
+        background-color: blue;
+      }
+      .navy {
+        background-color: navy;
+      }
+      .purple {
+        background-color: purple;
+      }
+    </style>
+    <script>
+      let cnt = 0
+      function switchClass() {
+        switch (cnt) {
+          case 0:
+            $('div').switchClass('red', 'orange')
+            cnt++
+            break
+          case 1:
+            $('div').switchClass('orange', 'yellow')
+            cnt++
+            break
+          case 2:
+            $('div').switchClass('yellow', 'green')
+            cnt++
+            break
+          case 3:
+            $('div').switchClass('green', 'blue')
+            cnt++
+            break
+          case 4:
+            $('div').switchClass('blue', 'navy')
+            cnt++
+            break
+          case 5:
+            $('div').switchClass('navy', 'purple')
+            cnt++
+            break
+          case 6:
+            $('div').switchClass('purple', 'red')
+            cnt = 0
+            break
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div onclick="switchClass()"></div>
+  </body>
+</html>
