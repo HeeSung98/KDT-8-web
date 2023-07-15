@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습1</title>
+    <style>
+      @font-face {
+        font-family: 'TTWanjudaedunsancheB';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/TTWanjudaedunsancheB.woff2')
+          format('woff2');
+      }
+
+      body {
+        background-color: antiquewhite;
+      }
+
+      @media screen and (min-width: 500px) {
+        body {
+          background-color: aqua;
+        }
+      }
+      @media screen and (max-width: 300px) {
+        body {
+          background-color: orange;
+        }
+      }
+      @media screen and (min-height: 500px) {
+        .google {
+          font-family: 'Noto Sans KR', sans-serif;
+        }
+      }
+      @media screen and (max-height: 300px) {
+        body {
+          color: green;
+        }
+      }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <p class="google">미디어 쿼리 실습</p>
+  </body>
+</html>

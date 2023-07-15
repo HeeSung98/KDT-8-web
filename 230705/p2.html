@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      * {
+        font-size: 20px;
+      }
+      /* 1 */
+      span.orange {
+        color: red;
+      }
+
+      /* 2 */
+      ul > .orange {
+        background-color: yellow;
+      }
+
+      /* 3 */
+      ul .orange {
+        color: green;
+      }
+
+      /* 4 */
+      .for4 + li {
+        color: blue;
+      }
+
+      /* 5 */
+      .orange ~ li {
+        background-color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span>1. 오렌지</span>
+      <span class="orange">오렌지</span>
+      <ul>
+        <li>사과</li>
+        <li class="orange">2. 오렌지</li>
+        <span class="for4"> <li class="orange">3. 오렌지</li> </span>
+        <li>4. 망고</li>
+        <li>5. 포도</li>
+      </ul>
+    </div>
+  </body>
+</html>
