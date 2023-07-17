@@ -16,7 +16,7 @@
 
       console.log('replace: ' + str.replace('s', 'S'))
 
-      console.log('repeat:' + str.repeat(3))
+      console.log('repeat:' + str.repeat(2))
 
       console.log('split: ' + str.split(''))
       console.log('split: ' + str.split(' '))
@@ -72,12 +72,14 @@
       str = 'Holiday'
       let a = str.split('')
       console.log('a: ' + a)
+      console.log('a[1]: ' + a[1])
       let b = a.reverse()
       console.log('b: ' + b)
       let c = b.join('')
       console.log('c: ' + c)
 
-      console.log('methodChaining: ' + str.split('').reverse().join(''))
+      let methodChaining = str.split('').reverse().join('')
+      console.log('methodChaining: ' + methodChaining)
 
       console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
 
