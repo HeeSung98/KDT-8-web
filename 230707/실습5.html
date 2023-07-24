@@ -28,25 +28,35 @@
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="div1"></div>
-      <div class="div2"></div>
-      <div class="div3"></div>
+    <div style="display: flex">
+      <div class="container">
+        <div class="div1"></div>
+        <div class="div2"></div>
+        <div class="div3"></div>
+      </div>
+      <div style="width: 100px"></div>
+      <div
+        class="container"
+        style="flex-direction: row-reverse; position: static; top: 400px"
+      >
+        <div class="div1"></div>
+        <div class="div2"></div>
+        <div class="div3"></div>
+      </div>
     </div>
     <br />
-    <div
-      class="container"
-      style="flex-direction: row-reverse; position: static; top: 400px"
-    >
-      <div class="div1"></div>
-      <div class="div2"></div>
-      <div class="div3"></div>
-    </div>
-    <br />
-    <div class="container" style="flex-direction: column">
-      <div class="div1"></div>
-      <div class="div2"></div>
-      <div class="div3"></div>
+    <div style="display: flex">
+      <div class="container" style="flex-direction: column">
+        <div class="div1"></div>
+        <div class="div2"></div>
+        <div class="div3"></div>
+      </div>
+      <div style="width: 100px"></div>
+      <div class="container" style="flex-direction: column-reverse">
+        <div class="div1"></div>
+        <div class="div2"></div>
+        <div class="div3"></div>
+      </div>
     </div>
   </body>
 </html>
