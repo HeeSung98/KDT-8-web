@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // setTimeout(function () {
+    //   document.querySelector('body').style.backgroundColor = 'red'
+    //   setTimeout(function () {
+    //     document.querySelector('body').style.backgroundColor = 'orange'
+    //     setTimeout(function () {
+    //       document.querySelector('body').style.backgroundColor = 'yellow'
+    //       setTimeout(function () {
+    //         document.querySelector('body').style.backgroundColor = 'green'
+    //         setTimeout(function () {
+    //           document.querySelector('body').style.backgroundColor = 'blue'
+    //           setTimeout(function () {
+    //             document.querySelector('body').style.backgroundColor = 'navy'
+    //             setTimeout(function () {
+    //               document.querySelector('body').style.backgroundColor =
+    //                 'pupple'
+    //             }, 1000)
+    //           }, 1000)
+    //         }, 1000)
+    //       }, 1000)
+    //     }, 1000)
+    //   }, 1000)
+    // }, 1000)
+
+    function changeColor(color) {
+      return new Promise((resolve, result) => {
+        setTimeout(() => {
+          document.querySelector('body').style.backgroundColor = color
+          resolve(color)
+        }, 1000)
+      })
+    }
+
+    changeColor('red').then(() => {
+      changeColor('orange').then(() => {
+        changeColor('yellow').then(() => {
+          changeColor('green').then(() => {
+            changeColor('blue').then(() => {
+              changeColor('navy').then(() => {
+                changeColor('purple')
+              })
+            })
+          })
+        })
+      })
+    }).catch("뭐야 이거")
+  </script>
+</html>
