@@ -16,8 +16,12 @@
 
     <form action="/postForm" , method="post">
       <input type="text" name="id" />
-      <input type="password" name="pw" />
+      <input type="password" name="pw" pattern="^([a-z0-9]){8, 12}" />
       <button>post 제출</button>
     </form>
+
+    <Hr />
+    <input type="email" />
+    <input type="tel" />
   </body>
 </html>

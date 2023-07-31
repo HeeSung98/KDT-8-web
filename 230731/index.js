@@ -15,6 +15,23 @@ app.get('/', (req, res) => {
   res.render('index', { title: '폼 실습' })
 })
 
+app.get('/get', (req, res) => {
+  res.render('get')
+})
+
+app.get('/getResult', (req, res) => {
+  console.log(req.query)
+  res.render('getResult', { title: 'GET 결과!', userInfo: req.query })
+})
+
+app.get('/post', (req, res) => {
+  res.render('post')
+})
+
+app.post('/postResult', (req, res) => {
+  res.render('postResult', { title: 'POST 결과!', userInfo: req.body })
+})
+
 app.post('/', (req, res) => {
   console.log(req.body)
 })
