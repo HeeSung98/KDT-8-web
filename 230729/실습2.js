@@ -25,6 +25,7 @@ function hell() {
     }, 1000)
   })
 }
+
 async function excute() {
   let resultCall = await call('kim')
   console.log('반가워' + resultCall)

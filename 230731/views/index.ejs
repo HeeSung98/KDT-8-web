@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <form action="/getForm" , method="get">
+      <input type="text" name="id" />
+      <input type="password" name="pw" />
+      <button>get 제출</button>
+    </form>
+
+    <form action="/postForm" , method="post">
+      <input type="text" name="id" />
+      <input type="password" name="pw" />
+      <button>post 제출</button>
+    </form>
+  </body>
+</html>
