@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 100px;
+        background-color: antiquewhite;
+      }
+
+      .div1 {
+        background-color: cyan;
+      }
+      .div2 {
+        background-color: yellow;
+      }
+      .div3 {
+        background-color: magenta;
+      }
+      .div4 {
+        background-color: black;
+      }
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div1"></div>
+    <div class="div1"></div>
+    <div class="div2" id="idTest"></div>
+    <div class="div3" name="nameTest"></div>
+    <div class="div4" name="nameTest"></div>
+    <br /><br />
+    <a href="http://google.com" id="google" class="red">google</a><br /><br />
+  </body>
+  <script>
+    console.log(document.getElementsByClassName('div1'))
+    console.log(document.getElementById('idTest'))
+    console.log(document.getElementsByName('nameTest'))
+    console.log(document.getElementsByTagName('div'))
+
+    console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+    console.log(document.querySelector('#idTest'))
+    console.log(document.querySelector('.div1'))
+    console.log(document.querySelectorAll('.div1'))
+    console.log(document.querySelector('div'))
+    console.log(document.querySelectorAll('div'))
+
+    console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+    let google = document.getElementById('google')
+
+    console.log('classList: ', google.classList)
+    google.classList.add('d-none')
+    google.classList.add('box')
+    console.log('classList: ', google.classList)
+    google.classList.remove('box')
+    console.log('classList: ', google.classList)
+    console.log(google.classList.contains('d-none'))
+    google.classList.toggle('d-none')
+    console.log('classList: ', google.classList)
+
+    console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+    google.setAttribute('href', 'http://naver.com')
+
+    console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+  </script>
+</html>

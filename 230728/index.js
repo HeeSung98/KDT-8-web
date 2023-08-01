@@ -1,19 +1,15 @@
 const express = require('express')
-
 const app = express()
 const PORT = 8080
 
+//view engine
 app.set('view engine', 'ejs')
-
-//views 파일 불러오기
 app.set('views', './views')
 
-//정적인 파일 불러오기
+//static file loading
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  //res.send('hello express')
-  //res.send({ result: true, code: 1000, message: '회원가입에 성공하셨습니다.' })
   res.render('main')
 })
 
