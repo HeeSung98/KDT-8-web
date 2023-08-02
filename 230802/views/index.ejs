@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>싱글 파일 업로드폼</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="userFile" multiple /><br /><br />
+
+      파일명: <input type="text" name="title" /><br /><br />
+      <button type="submit">업로드</button>
+    </form>
+
+    <h1>멀티 파일 업로드폼 ver1</h1>
+    <form action="/uploadArray" method="post" enctype="multipart/form-data">
+      <input type="file" name="userFiles" multiple /><br /><br />
+
+      파일명: <input type="text" name="title" /><br /><br />
+      <button type="submit">업로드</button>
+    </form>
+
+    <h1>멀티 파일 업로드폼 ver2</h1>
+    <form action="/uploadFields" method="post" enctype="multipart/form-data">
+      <input type="file" name="userFile1" /><br /><br />
+
+      파일명: <input type="text" name="title" /><br /><br />
+
+      <input type="file" name="userFile2" /><br /><br />
+
+      파일명: <input type="text" name="title" /><br /><br />
+      <button type="submit">업로드</button>
+    </form>
+
+    <h1>동적 파일 업로드폼</h1>
+    <input type="file" id="dynamicFile" name="dynamicFile" /><br /><br />
+
+    파일명: <input type="text" name="title" /><br /><br />
+    <button type="button" onclick="upload()">업로드</button><br />
+    <div class="result"></div>
+  </body>
+  <script>
+    const resultBox = document.querySelector('.result')
+
+    function upload() {
+      const file = document.querySelector('#dynamicFile')
+      console.log(file.files[0])
+
+      const formData = new FormData()
+      formData.append('dynamicFile', file.files[0])
+      console.log(formData)
+
+      axios({
+        method: 'POST',
+        url: '/uploadDynamic',
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }).then((res) => {})
+    }
+  </script>
+</html>

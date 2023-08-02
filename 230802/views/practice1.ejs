@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form>
+      <label for="username">아이디: </label>
+      <input type="text" id="id" required /> <br /><br />
+      <label for="password">비밀번호: </label>
+      <input type="password" id="password" required /> <br /><br />
+
+      <label for="username">이름: </label>
+      <input type="text" id="name" required /><br /><br />
+
+      프로필 사진:
+      <input type="file" id="dynamicFile" name="dynamicFile" /><br /><br />
+      <button type="button" onclick="reset()">리셋</button>
+      <button type="button" onclick="signUp()">회원가입</button>
+      <div class="resultText"></div>
+      <div class="resultImg"></div>
+    </form>
+    <br />
+    <div class="result"></div>
+  </body>
+  <script>
+    function signUp() {
+      console.log('signUp()')
+
+      const resultText = document.querySelector('.resultText')
+      const resultImg = document.querySelector('.resultImg')
+
+      const formData = new FormData()
+      const id = document.querySelector('#id').value
+      const password = document.querySelector('#password').value
+      const name = document.querySelector('#name').value
+      const dynamicFile = document.querySelector('#dynamicFile').files[0]
+      formData.append('id', id)
+      formData.append('password', password)
+      formData.append('name', name)
+      formData.append('dynamicFile', dynamicFile)
+      console.log(formData)
+
+      axios({
+        method: 'POST',
+        url: '/result',
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }).then((res) => {
+        console.log('res.data.data: ', res.data.data)
+        console.log('res.data.file: ', res.data.file)
+        resultText.innerHTML = `<div>${res.data.data.name}님 회원가입에 성공하셨습니다!!</div><br>`
+        resultImg.innerHTML = `<div><img src=${res.data.file.path}></div>`
+      })
+    }
+  </script>
+</html>

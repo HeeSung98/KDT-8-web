@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>axiosGet</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>axios get 실습</h1>
+    <form name="register" id="register">
+      이름: <input type="text" name="name" /><br /><br />
+      성별:
+      <input type="radio" name="sex" value="남" />남
+      <input type="radio" name="sex" value="여" />여<br /><br />
+      생년월일:
+      <select name="y">
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option></select
+      >년
+      <select name="m">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option></select
+      >월
+      <select name="d">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option></select
+      >일<br /><br />
+      관심사: <input type="checkbox" value="여행" name="f" />여행
+      <input type="checkbox" value="패션" name="f" />패션
+      <input type="checkbox" value="음악" name="f" />음악 <br /><br /><br />
+      <button type="button" onclick="getRegister()">회원가입</button>
+    </form>
+  </body>
+  <script>
+    function getRegister() {
+      console.log('get register')
+      const form = document.forms['register']
+      const formId = document.getElementById('register')
+      console.log(form)
+
+      const checked = formId.querySelectorAll('input[type="checkbox"]:checked')
+      console.log(checked)
+      const favorit = []
+      checked.forEach((element) => {
+        favorit.push(element.value)
+      })
+
+      const data = {
+        name: form.name.value,
+        sex: form.sex.value,
+        y: form.y.value,
+        m: form.m.value,
+        d: form.d.value,
+        f: favorit,
+      }
+
+      console.log(data)
+
+      axios({
+        method: 'GET',
+        url: '/resultGet',
+        params: data,
+      }).then((res) => {
+        console.log('res: ', res)
+      })
+    }
+  </script>
+</html>
