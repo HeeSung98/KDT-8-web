@@ -25,12 +25,6 @@ app.get('/gugu', (req, res) => {
   res.render('gugu', { arr: [1, 2, 3, 4, 5, 6, 7, 8, 9] })
 })
 
-app.get('/', (req, res) => {
-  res.render('gugu', { arr: [1, 2, 3, 4, 5, 6, 7, 8, 9] })
-})
-
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`)
 })
-
-console.log(express)

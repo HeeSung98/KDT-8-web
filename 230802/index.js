@@ -64,7 +64,7 @@ app.post('/uploadDynamic', uploadDetail.single('dynamicFile'), (req, res) => {
 
 app.post('/result', uploadDetail.single('dynamicFile'), (req, res) => {
   console.log(req.body)
-  res.send({ data: req.body, file: req.file })
+  res.send({ userInfo: req.body, file: req.file })
 })
 
 app.listen(PORT, () => {
