@@ -68,5 +68,5 @@ app.post('/result', uploadDetail.single('dynamicFile'), (req, res) => {
 })
 
 app.listen(PORT, () => {
-  console.log(console.log(`http://localhost:${PORT}`))
+  console.log(`http://localhost:${PORT}`)
 })
