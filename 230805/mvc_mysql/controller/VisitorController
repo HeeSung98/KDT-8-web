@@ -5,8 +5,47 @@ exports.main = (req, res) => {
 }
 
 exports.visitor = (req, res) => {
-  const data = Visitor.getVisitors()
-  console.log(data)
+  // DB 연동 전
+  // const data = Visitor.getVisitors()
+  // console.log(data)
 
-  res.render('visitor', { data })
+  // res.render('visitor', { data })
+
+  Visitor.getVisitors((data) => {
+    console.log(data)
+    res.render('visitor', { data })
+  })
+}
+
+exports.visitorRegister = (req, res) => {
+  const body = req.body
+  console.log('req.body.name: ' + body.name)
+  console.log('req.body.comment: ' + body.comment)
+  Visitor.insertVisitors(body.name, body.comment, (data) => {
+    console.log(data)
+    res.render('visitor', { data })
+    res.render('visitor')
+  })
+}
+
+exports.visitorModify = (req, res) => {
+  const body = req.body
+  console.log('req.body.id: ' + body.id)
+  console.log('req.body.name: ' + body.name)
+  console.log('req.body.comment: ' + body.comment)
+  Visitor.updateVisitors(body.id, body.name, body.comment, (data) => {
+    console.log(data)
+    res.render('visitor', { data })
+    res.render('visitor')
+  })
+}
+
+exports.visitorRemove = (req, res) => {
+  const body = req.body
+  console.log('req.body.id: ' + body.id)
+  Visitor.deleteVisitors(body.id, (data) => {
+    console.log(data)
+    res.render('visitor', { data })
+    res.render('visitor')
+  })
 }

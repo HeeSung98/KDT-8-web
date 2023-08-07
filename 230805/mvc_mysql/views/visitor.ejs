@@ -3,14 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>방명록</title>
   </head>
   <body>
     <fieldset>
       <legend>방명록 등록</legend>
-      <input type="text" value="사용자 이름" /> <br />
-      <input type="text" value="방명록" /> <br />
-      <button>등록</button> <br />
+      <input type="text" value="사용자 이름" id="name" /> <br />
+      <input type="text" value="방명록" id="comment" /> <br />
+      <button onclick="register()" id="btnRegister" style="visibility: visible">
+        등록
+      </button>
+      <button
+        onclick="modifySecond()"
+        id="btnModify"
+        style="visibility: hidden"
+      >
+        수정
+      </button>
+      <br />
     </fieldset>
     <table border="1">
       <thead>
@@ -25,14 +36,119 @@
       <tbody>
         <% for(var i = 0; i < data.length; i++) { %>
         <tr>
-          <td><%= data[i].id %></td>
-          <td><%= data[i].name %></td>
-          <td><%= data[i].comment %></td>
-          <td><button type="button">수정</button></td>
-          <td><button type="button">삭제</button></td>
+          <td id="id<%= data[i].id %>"><%= data[i].id %></td>
+          <td id="name<%= data[i].id %>"><%= data[i].name %></td>
+          <td id="comment<%= data[i].id %>"><%= data[i].comment %></td>
+          <td>
+            <button
+              type="button"
+              onclick="modifyFirst(value)"
+              value="<%= data[i].id %>"
+            >
+              수정
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              onclick="remove(value)"
+              value="<%= data[i].id %>"
+            >
+              삭제
+            </button>
+          </td>
         </tr>
         <% } %>
       </tbody>
     </table>
   </body>
+  <script>
+    function register() {
+      console.log('register()')
+
+      const resultBox = document.querySelector('.result')
+      const data = {
+        name: document.querySelector('#name').value,
+        comment: document.querySelector('#comment').value,
+      }
+      console.log(data)
+
+      axios({
+        method: 'POST',
+        url: '/visitor/register',
+        data,
+      }).then((res) => {
+        console.log('res: ', res)
+        location.reload()
+      })
+    }
+
+    let modifyId = -1
+
+    function modifyFirst(id) {
+      console.log('modifyFirst()')
+      console.log(id)
+
+      modifyId = id
+      document.querySelector('#name').value = document.getElementById(
+        `name${id}`
+      ).innerHTML
+      document.querySelector('#comment').value = document.getElementById(
+        `comment${id}`
+      ).innerHTML
+      document
+        .querySelector('#btnModify')
+        .setAttribute('style', 'visibility: visible')
+      document
+        .querySelector('#btnRegister')
+        .setAttribute('style', 'display: none')
+    }
+
+    function modifySecond(id) {
+      console.log('modifySecond()')
+      console.log(modifyId)
+
+      const resultBox = document.querySelector('.result')
+      const data = {
+        id: modifyId,
+        name: document.querySelector('#name').value,
+        comment: document.querySelector('#comment').value,
+      }
+      console.log(data)
+
+      document
+        .querySelector('#btnModify')
+        .setAttribute('style', 'display: none')
+      document
+        .querySelector('#btnRegister')
+        .setAttribute('style', 'visibility: visible')
+
+      axios({
+        method: 'PATCH',
+        url: '/visitor/modify',
+        data,
+      }).then((res) => {
+        console.log('res: ', res)
+        location.reload()
+      })
+    }
+
+    function remove(id) {
+      console.log('remove()')
+
+      const data = {
+        id: id,
+      }
+      console.log(data)
+
+      axios({
+        method: 'PATCH',
+        url: '/visitor/remove',
+        data,
+      }).then((res) => {
+        console.log('res: ', res)
+        location.reload()
+      })
+    }
+  </script>
 </html>
