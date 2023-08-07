@@ -21,7 +21,8 @@ const conn = mysql.createConnection({
   database: 'bootcamp',
 })
 
-exports.getVisitors = (callback) => {
+exports.selectVisitors = (callback) => {
+  console.log('selectVisitors')
   const sql = 'select * from visitor;'
   conn.query(sql, (err, rows) => {
     if (err) throw err
@@ -30,7 +31,18 @@ exports.getVisitors = (callback) => {
   })
 }
 
-exports.insertVisitors = (name, comment, callback) => {
+exports.selectVisitor = (id, callback) => {
+  console.log('selectVisitor')
+  const sql = `select * from visitor where id = '${id}'`
+  conn.query(sql, (err, rows) => {
+    if (err) throw err
+    console.log('Visitors: ', rows)
+    callback(rows)
+  })
+}
+
+exports.insertVisitor = (name, comment, callback) => {
+  console.log('insertVisitor')
   const sql = `insert into visitor (name, comment) values ('${name}', '${comment}')`
   conn.query(sql, (err, rows) => {
     if (err) throw err
@@ -39,7 +51,8 @@ exports.insertVisitors = (name, comment, callback) => {
   })
 }
 
-exports.updateVisitors = (id, name, comment, callback) => {
+exports.updateVisitor = (id, name, comment, callback) => {
+  console.log('updateVisitor')
   const sql = `update visitor set name = '${name}', comment = '${comment}' where id = '${id}'`
   conn.query(sql, (err, rows) => {
     if (err) throw err
@@ -48,7 +61,8 @@ exports.updateVisitors = (id, name, comment, callback) => {
   })
 }
 
-exports.deleteVisitors = (id, callback) => {
+exports.deleteVisitor = (id, callback) => {
+  console.log('deleteVisitor')
   const sql = `delete from visitor where id = ${id}`
   conn.query(sql, (err, rows) => {
     if (err) throw err

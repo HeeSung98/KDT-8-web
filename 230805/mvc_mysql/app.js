@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const indexRouter = require('./router')
+const router = require('./router')
 const PORT = 8080
 
 //view
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 //router
-app.use('/', indexRouter)
+app.use('/', router)
 
 app.get('*', (req, res) => {
   res.render('404')

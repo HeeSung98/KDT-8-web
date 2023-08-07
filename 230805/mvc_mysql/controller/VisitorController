@@ -1,4 +1,4 @@
-const Visitor = require('../model/Visitor')
+const Visitor = require('../model/VisitorModel')
 
 exports.main = (req, res) => {
   res.render('index')
@@ -11,7 +11,7 @@ exports.visitor = (req, res) => {
 
   // res.render('visitor', { data })
 
-  Visitor.getVisitors((data) => {
+  Visitor.selectVisitors((data) => {
     console.log(data)
     res.render('visitor', { data })
   })
@@ -21,7 +21,7 @@ exports.visitorRegister = (req, res) => {
   const body = req.body
   console.log('req.body.name: ' + body.name)
   console.log('req.body.comment: ' + body.comment)
-  Visitor.insertVisitors(body.name, body.comment, (data) => {
+  Visitor.insertVisitor(body.name, body.comment, (data) => {
     console.log(data)
     res.render('visitor', { data })
     res.render('visitor')
@@ -33,7 +33,7 @@ exports.visitorModify = (req, res) => {
   console.log('req.body.id: ' + body.id)
   console.log('req.body.name: ' + body.name)
   console.log('req.body.comment: ' + body.comment)
-  Visitor.updateVisitors(body.id, body.name, body.comment, (data) => {
+  Visitor.updateVisitor(body.id, body.name, body.comment, (data) => {
     console.log(data)
     res.render('visitor', { data })
     res.render('visitor')
@@ -43,7 +43,7 @@ exports.visitorModify = (req, res) => {
 exports.visitorRemove = (req, res) => {
   const body = req.body
   console.log('req.body.id: ' + body.id)
-  Visitor.deleteVisitors(body.id, (data) => {
+  Visitor.deleteVisitor(body.id, (data) => {
     console.log(data)
     res.render('visitor', { data })
     res.render('visitor')

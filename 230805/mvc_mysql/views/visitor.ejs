@@ -9,8 +9,8 @@
   <body>
     <fieldset>
       <legend>방명록 등록</legend>
-      <input type="text" value="사용자 이름" id="name" /> <br />
-      <input type="text" value="방명록" id="comment" /> <br />
+      <input type="text" value="" placeholder="사용자 이름" id="name" /> <br />
+      <input type="text" value="" placeholder="방명록" id="comment" /> <br />
       <button onclick="register()" id="btnRegister" style="visibility: visible">
         등록
       </button>
@@ -36,14 +36,16 @@
       <tbody>
         <% for(var i = 0; i < data.length; i++) { %>
         <tr>
-          <td id="id<%= data[i].id %>"><%= data[i].id %></td>
+          <td id="id<%= data[i].id %>" onclick="get(data[i].id)">
+            <%= data[i].id %>
+          </td>
           <td id="name<%= data[i].id %>"><%= data[i].name %></td>
           <td id="comment<%= data[i].id %>"><%= data[i].comment %></td>
           <td>
             <button
               type="button"
-              onclick="modifyFirst(value)"
               value="<%= data[i].id %>"
+              onclick="modifyFirst(value)"
             >
               수정
             </button>
@@ -51,8 +53,8 @@
           <td>
             <button
               type="button"
-              onclick="remove(value)"
               value="<%= data[i].id %>"
+              onclick="remove(value)"
             >
               삭제
             </button>
@@ -63,6 +65,7 @@
     </table>
   </body>
   <script>
+    // visitor 등록 함수
     function register() {
       console.log('register()')
 
@@ -83,8 +86,30 @@
       })
     }
 
-    let modifyId = -1
+    // visitor 조회 함수
+    function get(id) {
+      console.log('get()')
 
+      const data = {
+        id: id,
+      }
+      console.log(data)
+
+      axios({
+        method: 'GET',
+        url: `/visitor/get?id=${id}`,
+        data,
+      }).then((res) => {
+        console.log('res: ', res)
+        location.reload()
+      })
+    }
+
+    // visitor 수정 함수, first와 second 두 단계로 동작
+
+    let modifyId = -1 // 수정할 id를 담는 변수
+
+    // 리스트에서 수정 버튼을 눌렀을 때
     function modifyFirst(id) {
       console.log('modifyFirst()')
       console.log(id)
@@ -92,10 +117,10 @@
       modifyId = id
       document.querySelector('#name').value = document.getElementById(
         `name${id}`
-      ).innerHTML
+      ).innerText
       document.querySelector('#comment').value = document.getElementById(
         `comment${id}`
-      ).innerHTML
+      ).innerText
       document
         .querySelector('#btnModify')
         .setAttribute('style', 'visibility: visible')
@@ -104,6 +129,7 @@
         .setAttribute('style', 'display: none')
     }
 
+    // 등록창에서 수정 버튼을 눌렀을 때
     function modifySecond(id) {
       console.log('modifySecond()')
       console.log(modifyId)
@@ -133,6 +159,7 @@
       })
     }
 
+    // visitor 삭제 함수
     function remove(id) {
       console.log('remove()')
 
@@ -142,7 +169,7 @@
       console.log(data)
 
       axios({
-        method: 'PATCH',
+        method: 'DELETE',
         url: '/visitor/remove',
         data,
       }).then((res) => {
