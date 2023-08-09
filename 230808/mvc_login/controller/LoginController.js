@@ -27,7 +27,7 @@ exports.loginPost = (req, res) => {
   console.log(data)
   Login.login(data.id, data.pw, (result) => {
     console.log('Login Result: ', data)
-    res.send({ data })
+    res.render('login', { data: result })
   })
 }
 

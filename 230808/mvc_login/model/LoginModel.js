@@ -21,12 +21,10 @@ exports.login = (id, pw, callback) => {
   conn.query(sql, (err, rows) => {
     if (err) {
       console.log('login err: ', err)
+      throw err
     }
-    console.log('model login result:', rows[0].id)
-    if (rows[0].id == '') {
-      callback(false)
-    }
-    callback(true)
+    console.log('model login result:', rows)
+    callback(rows)
   })
 }
 

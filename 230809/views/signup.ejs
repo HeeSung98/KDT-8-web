@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <title>Login</title>
+    <title>Sign up</title>
   </head>
   <body>
-    <h1>로그인 하기</h1>
+    <h1>회원가입 하기</h1>
+
     <fieldset style="width: 20vw">
-      <legend>로그인</legend>
+      <legend>회원가입</legend>
       <input
         type="text"
         value=""
@@ -19,61 +20,74 @@
       />
       <br /><br />
       <input
+        type="text"
+        value=""
+        placeholder="이름"
+        id="name"
+        style="width: 19vw"
+      />
+      <br /><br />
+      <input
         type="password"
         value=""
-        placeholder="password"
+        placeholder="비밀번호"
         id="pw"
         style="width: 19vw"
       />
       <br /><br />
+      <input
+        type="password"
+        value=""
+        placeholder="비밀번호 확인"
+        id="pwCheck"
+        style="width: 19vw"
+      /><br />
       <br />
       <div
         style="
           visibility: visible;
           display: flex;
           justify-content: center;
-          text-align: center;
+          text-align: ceenter;
         "
       >
-        <button onclick="login()" id="login">로그인</button>
-        <div style="width: 2vw; height: 1vh"></div>
-        <button onclick="location.href='./signup'" id="login">회원가입</button>
+        <button onclick="signup()" id="signup">완료</button>
       </div>
       <br />
     </fieldset>
-    <form action="./profile" name="profile" method="post" hidden>
-      <input type="text" value="" name="profile" />
-    </form>
   </body>
   <script>
-    function login() {
-      console.log('login()')
+    function signup() {
+      console.log('singup()')
+
+      if (
+        document.querySelector('#pw').value !=
+        document.querySelector('#pwCheck').value
+      ) {
+        alert('비밀번호가 다릅니다.')
+        document.querySelector('#pwCheck').value = ''
+        return
+      }
 
       const data = {
         id: document.querySelector('#id').value,
+        name: document.querySelector('#name').value,
         pw: document.querySelector('#pw').value,
       }
       console.log(data)
 
       axios({
         method: 'POST',
-        url: '/login',
+        url: '/signup',
         data,
       })
         .then((res) => {
-          const resId = res.data.result.id
-          console.log('resId: ', resId)
-          if (resId == '') {
-            alert('아이디나 비밀번호를 잘못 입력하셨습니다.')
-          } else {
-            const formProfile = document.forms['profile']
-            formProfile.profile.value = data.id
-            formProfile.submit()
-          }
+          console.log('res: ', res)
+          location.href = './'
         })
         .catch((err) => {
           console.log('err: ', err)
-          alert('아이디나 비밀번호를 잘못 입력하셨습니다.')
+          alert('중복된 아이디입니다.')
         })
     }
   </script>

@@ -1,0 +1,11 @@
+const models = require('../models')
+
+exports.main = (req, res) => {
+  res.render('index')
+}
+
+exports.visitor = (req, res) => {
+  models.visitor.findAll().then((result) => {
+    res.render('visitor', { data: result })
+  })
+}
