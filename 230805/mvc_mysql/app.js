@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const router = require('./router')
+const router = require('./router/VisitorRouter')
 const PORT = 8080
 
 //view
