@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Sign up</title>
+  </head>
+  <body>
+    <h1><%= data[0].name %>님 반갑습니다😆</h1>
+
+    <fieldset style="width: 20vw">
+      <legend>회원정보 확인</legend>
+      <input
+        type="text"
+        value="<%= data[0].idno %>"
+        id="idno"
+        style="width: 19vw"
+        hidden
+      />
+      ID
+      <input
+        type="text"
+        value="<%= data[0].id %>"
+        id="id"
+        style="width: 19vw"
+        readonly
+      />
+      <br /><br />
+      이름<br />
+      <input
+        type="text"
+        value="<%= data[0].name %>"
+        id="name"
+        style="width: 19vw"
+      />
+      <br />
+      <br />
+      <div
+        style="
+          visibility: visible;
+          display: flex;
+          justify-content: center;
+          text-align: ceenter;
+        "
+      >
+        <button onclick="modify()" id="login">회원정보 수정</button>
+        <div style="width: 2vw; height: 1vh"></div>
+        <button onclick="remove()" id="login">회원 탈퇴</button>
+      </div>
+      <br />
+    </fieldset>
+  </body>
+  <script>
+    function modify() {
+      console.log('modify()')
+
+      const data = {
+        idno: document.querySelector('#idno').value,
+        name: document.querySelector('#name').value,
+      }
+      console.log(data)
+
+      axios({
+        method: 'PATCH',
+        url: '/profile/modify',
+        data,
+      })
+        .then((res) => {
+          console.log('res: ', res)
+          location.reload()
+        })
+        .catch((err) => {
+          console.log('err: ', err)
+        })
+    }
+
+    function remove() {
+      console.log('remove()')
+
+      const data = {
+        idno: document.querySelector('#idno').value,
+      }
+      console.log(data)
+
+      axios({
+        method: 'DELETE',
+        url: '/profile/remove',
+        data,
+      })
+        .then((res) => {
+          console.log('res: ', res)
+          location.href = '/'
+        })
+        .catch((err) => {
+          console.log('err: ', err)
+        })
+    }
+  </script>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>로그인 하기</h1>
+    <fieldset style="width: 20vw">
+      <legend>회원정보 입력</legend>
+      <input
+        type="text"
+        value=""
+        placeholder="ID"
+        id="id"
+        style="width: 19vw"
+      />
+      <br /><br />
+      <input
+        type="password"
+        value=""
+        placeholder="password"
+        id="pw"
+        style="width: 19vw"
+      />
+      <br /><br />
+      <br />
+      <div
+        style="
+          visibility: visible;
+          display: flex;
+          justify-content: center;
+          text-align: center;
+        "
+      >
+        <button onclick="login()" id="login">로그인</button>
+        <div style="width: 2vw; height: 1vh"></div>
+        <button onclick="location.href='./signup'" id="login">회원가입</button>
+      </div>
+      <br />
+    </fieldset>
+    <form action="./profile" name="profile" method="post" hidden>
+      <input type="text" value="" name="profile" />
+    </form>
+  </body>
+  <script>
+    function login() {
+      console.log('login()')
+
+      const data = {
+        id: document.querySelector('#id').value,
+        pw: document.querySelector('#pw').value,
+      }
+      console.log(data)
+
+      axios({
+        method: 'POST',
+        url: '/login',
+        data,
+      })
+        .then((res) => {
+          const resId = res.data.data.id
+          console.log('resId: ', resId)
+          if (resId == '') {
+            alert('아이디나 비밀번호를 잘못 입력하셨습니다.')
+          } else {
+            const formProfile = document.forms['profile']
+            formProfile.profile.value = data.id
+            formProfile.submit()
+          }
+        })
+        .catch((err) => {
+          console.log('err: ', err)
+          alert('아이디나 비밀번호를 잘못 입력하셨습니다.')
+        })
+    }
+  </script>
+</html>
