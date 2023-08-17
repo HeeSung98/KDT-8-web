@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>index</title>
+  </head>
+  <body>
+    <h1>JWT 실습</h1>
+    <div id="info"></div>
+  </body>
+  <script>
+    ;(async function init() {
+      const token = localStorage.getItem('token')
+      const info = document.querySelector('#info')
+
+      if (!token) {
+        infoDiv = '<a href="/login">로그인</a>'
+      } else {
+        const res = await axios({
+          method: 'POST',
+          url: '/token',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        if (res.data.result) {
+          infoDiv = `<p>${res.data.id}님 환영합니다!</p>
+          <button type='button', onclick='logout()'>로그아웃</button>`
+        }
+      }
+      info.innerHTML = infoDiv
+    })()
+
+    function logout() {
+      localStorage.clear()
+      document.location.reload()
+    }
+  </script>
+</html>
