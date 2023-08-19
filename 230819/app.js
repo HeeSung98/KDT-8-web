@@ -9,7 +9,7 @@ app.set('view engine', 'ejs')
 app.set('views', './views')
 
 //static file loading
-app.use('/uploads', express.static(__dirname + '/uploads'))
+app.use('/uploads', express.static(__dirname + '/uploads')) //__dirname은 현재 실행중인 폴더의 절대경로를 의미
 
 //upload
 const upload = multer({
@@ -34,37 +34,33 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
-app.get('/practice1', (req, res) => {
-  res.render('practice1')
-})
+// app.post('/upload', upload.single('userFile'), (req, res) => {
+//   console.log(req.file)
+//   console.log(req.body)
+// })
 
-app.post('/upload', uploadDetail.single('userFile'), (req, res) => {
-  console.log(req.file)
-  console.log(req.body)
-})
+// app.post('/upload', uploadDetail.single('userFile'), (req, res) => {
+//   console.log(req.file)
+//   console.log(req.body)
+// })
 
-app.post('/uploadArray', uploadDetail.array('userFiles'), (req, res) => {
-  console.log(req.files)
-  console.log(req.body)
-})
+// app.post('/upload/array', uploadDetail.array('userFiles'), (req, res) => {
+//   console.log(req.files)
+//   console.log(req.body)
+// })
 
-app.post(
-  '/uploadFields',
-  uploadDetail.fields([{ name: 'userFile1' }, { name: 'userFile2' }]),
-  (req, res) => {
-    console.log(req.files)
-    console.log(req.body)
-  }
-)
+// app.post(
+//   '/upload/fields',
+//   uploadDetail.fields([{ name: 'userFile1' }, { name: 'userFile2' }]),
+//   (req, res) => {
+//     console.log(req.files)
+//     console.log(req.body)
+//   }
+// )
 
-app.post('/uploadDynamic', uploadDetail.single('dynamicFile'), (req, res) => {
+app.post('/upload/dynamic', uploadDetail.single('dynamicFile'), (req, res) => {
   console.log(req.file)
   res.send(req.file)
-})
-
-app.post('/result', uploadDetail.single('dynamicFile'), (req, res) => {
-  console.log(req.body)
-  res.send({ userInfo: req.body, file: req.file })
 })
 
 app.listen(PORT, () => {
