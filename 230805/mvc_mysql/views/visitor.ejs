@@ -5,32 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>방명록</title>
+    <style>
+      th,
+      td,
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <fieldset>
+    <fieldset style="width: 10vw">
       <legend>방명록 등록</legend>
-      <input type="text" value="" placeholder="사용자 이름" id="name" /> <br />
-      <input type="text" value="" placeholder="방명록" id="comment" /> <br />
-      <button onclick="register()" id="btnRegister" style="visibility: visible">
+      <input
+        type="text"
+        value=""
+        placeholder="사용자 이름"
+        id="name"
+        style="margin-bottom: 10px"
+      />
+      <br />
+      <input type="text" value="" placeholder="방명록" id="comment" />
+      <br /><br />
+      <button
+        onclick="register()"
+        id="btnRegister"
+        style="display: flex; margin: auto"
+      >
         등록
       </button>
       <button
         onclick="modifySecond()"
         id="btnModify"
-        style="visibility: hidden"
+        style="display: none; margin: auto"
       >
         수정
       </button>
-      <br />
     </fieldset>
-    <table border="1">
+    <br /><br />
+    <table>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>작성자</th>
-          <th>방명록</th>
-          <th>수정</th>
-          <th>삭제</th>
+          <th style="width: 3vw">ID</th>
+          <th style="width: 6vw">작성자</th>
+          <th style="width: 12vw">방명록</th>
+          <th colspan="2">편집</th>
         </tr>
       </thead>
       <tbody>
@@ -123,7 +143,7 @@
       ).innerText
       document
         .querySelector('#btnModify')
-        .setAttribute('style', 'visibility: visible')
+        .setAttribute('style', 'display: flex; margin:auto')
       document
         .querySelector('#btnRegister')
         .setAttribute('style', 'display: none')
