@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>member</title>
+    <style>
+      th,
+      td,
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset style="width: 10vw">
+      <legend>회원 정보 추가</legend>
+      <input
+        type="text"
+        value=""
+        placeholder="사용자 이름"
+        id="name"
+        style="margin-bottom: 10px"
+      />
+      <br />
+      <input
+        type="text"
+        value=""
+        placeholder="성별"
+        id="sex"
+        style="margin-bottom: 10px"
+      /><br />
+      <input type="text" value="" placeholder="전공" id="major" />
+      <br /><br />
+      <button
+        onclick="register(<%= data.length + 1 %>)"
+        id="btnRegister"
+        style="display: flex; margin: auto"
+      >
+        등록
+      </button>
+      <button
+        onclick="modifySecond()"
+        id="btnModify"
+        style="display: none; margin: auto"
+      >
+        수정
+      </button>
+    </fieldset>
+    <br /><br />
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 3vw">ID</th>
+          <th style="width: 6vw">작성자</th>
+          <th style="width: 4vw">성별</th>
+          <th style="width: 12vw">전공</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i = 0; i < data.length; i++) { %>
+        <tr>
+          <td id="id<%= data[i].id %>" onclick="get(data[i].id)">
+            <%= data[i].id %>
+          </td>
+          <td id="name<%= data[i].id %>"><%= data[i].이름 %></td>
+          <td id="sex<%= data[i].id %>"><%= data[i].성별 %></td>
+          <td id="major<%= data[i].id %>"><%= data[i].전공 %></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+  <script>
+    function register(id) {
+      console.log('register()')
+
+      const data = {
+        id,
+        이름: document.querySelector('#name').value,
+        성별: document.querySelector('#sex').value,
+        전공: document.querySelector('#major').value,
+      }
+      console.log(data)
+
+      axios({
+        method: 'POST',
+        url: '/register',
+        data,
+      }).then((res) => {
+        console.log('res: ', res)
+        location.reload()
+      })
+    }
+  </script>
+</html>
