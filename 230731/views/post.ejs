@@ -13,22 +13,19 @@
       <input type="radio" name="sex" value="여" />여<br /><br />
       생년월일:
       <select name="y">
-        <option value="2020">2020</option>
-        <option value="2021">2021</option>
-        <option value="2022">2022</option>
-        <option value="2023">2023</option></select
+        <% for(var i = 1900; i <= 2023; i++) { %>
+        <option value="<%=i%>"><%= i %></option>
+        <% } %></select
       >년
       <select name="m">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option></select
+        <% for(var i = 1; i <= 12; i++) { %>
+        <option value="<%=i%>"><%= i %></option>
+        <% } %></select
       >월
       <select name="d">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option></select
+        <% for(var i = 1; i <= 31; i++) { %>
+        <option value="<%=i%>"><%= i %></option>
+        <% } %></select
       >일<br /><br />
       관심사: <input type="checkbox" value="여행" name="f" />여행
       <input type="checkbox" value="패션" name="f" />패션
