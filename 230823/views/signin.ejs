@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Signin</title>
+  </head>
+  <body>
+    <form onsubmit="signin(event)">
+      <input type="text" id="userId" placeholder="ID" /><br /><br />
+      <input type="password" id="userPw" placeholder="password" /><br /><br />
+      <button>로그인</button>
+    </form>
+    <form action="/member" method="post" id="member" style="display: none">
+      <input type="text" id="id" />
+    </form>
+  </body>
+  <script>
+    function signin(e) {
+      e.preventDefault()
+
+      axios({
+        method: 'POST',
+        url: '/signin',
+        data: {
+          userId: document.querySelector('#userId').value,
+          userPw: document.querySelector('#userPw').value,
+        },
+      }).then((res) => {
+        console.log(res)
+        if (res.data.result) {
+          alert(`${res.data.userName}님 환영합니다!`)
+        }
+        const member = document.forms['member']
+        member.id.value = res.data.id
+        member.submit()
+      })
+    }
+  </script>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>member</title>
+    <style>
+      th,
+      td,
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <br /><br />
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 6vw">회원번호</th>
+          <th style="width: 6vw">이름</th>
+          <th style="width: 12vw">ID</th>
+          <th colspan="2">편집</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i = 0; i < data.length; i++) { %>
+        <tr>
+          <td id="id" onclick="get(data[i].id)"><%= data[i].id %></td>
+          <td id="userId"><%= data[i].userId %></td>
+          <td id="userName"><%= data[i].userName %></td>
+          <td>
+            <button type="button" onclick="modifyFirst(value)">수정</button>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+    <fieldset style="width: 10vw; visibility: hidden">
+      <legend>회원 정보 수정</legend>
+      <input
+        type="text"
+        value=""
+        placeholder="사용자 이름"
+        id="name"
+        style="margin-bottom: 10px"
+      />
+      <br />
+      <button
+        onclick="register()"
+        id="btnRegister"
+        style="display: flex; margin: auto"
+      >
+        등록
+      </button>
+      <button
+        onclick="modifySecond()"
+        id="btnModify"
+        style="display: none; margin: auto"
+      >
+        수정
+      </button>
+    </fieldset>
+  </body>
+  <script>
+    // visitor 등록 함수
+    function register() {
+      console.log('register()')
+
+      const resultBox = document.querySelector('.result')
+      const data = {
+        name: document.querySelector('#name').value,
+        comment: document.querySelector('#comment').value,
+      }
+      console.log(data)
+
+      axios({
+        method: 'POST',
+        url: '/visitor/register',
+        data,
+      }).then((res) => {
+        console.log('res: ', res)
+        location.reload()
+      })
+    }
+
+    // visitor 조회 함수
+    function get(id) {
+      console.log('get()')
+
+      const data = {
+        id: id,
+      }
+      console.log(data)
+
+      axios({
+        method: 'GET',
+        url: `/visitor/get?id=${id}`,
+        data,
+      }).then((res) => {
+        console.log('res: ', res)
+        location.reload()
+      })
+    }
+
+    // visitor 수정 함수, first와 second 두 단계로 동작
+
+    let modifyId = -1 // 수정할 id를 담는 변수
+
+    // 리스트에서 수정 버튼을 눌렀을 때
+    function modifyFirst(id) {
+      console.log('modifyFirst()')
+      console.log(id)
+
+      modifyId = id
+      document.querySelector('#name').value = document.getElementById(
+        `name${id}`
+      ).innerText
+      document.querySelector('#comment').value = document.getElementById(
+        `comment${id}`
+      ).innerText
+      document
+        .querySelector('#btnModify')
+        .setAttribute('style', 'display: flex; margin:auto')
+      document
+        .querySelector('#btnRegister')
+        .setAttribute('style', 'display: none')
+    }
+
+    // 등록창에서 수정 버튼을 눌렀을 때
+    function modifySecond(id) {
+      console.log('modifySecond()')
+      console.log(modifyId)
+
+      const resultBox = document.querySelector('.result')
+      const data = {
+        id: modifyId,
+        name: document.querySelector('#name').value,
+        comment: document.querySelector('#comment').value,
+      }
+      console.log(data)
+
+      document
+        .querySelector('#btnModify')
+        .setAttribute('style', 'display: none')
+      document
+        .querySelector('#btnRegister')
+        .setAttribute('style', 'visibility: visible')
+
+      axios({
+        method: 'PATCH',
+        url: '/visitor/modify',
+        data,
+      }).then((res) => {
+        console.log('res: ', res)
+        location.reload()
+      })
+    }
+
+    // visitor 삭제 함수
+    function remove(id) {
+      console.log('remove()')
+
+      const data = {
+        id: id,
+      }
+      console.log(data)
+
+      axios({
+        method: 'DELETE',
+        url: '/visitor/remove',
+        data,
+      }).then((res) => {
+        console.log('res: ', res)
+        location.reload()
+      })
+    }
+  </script>
+</html>
