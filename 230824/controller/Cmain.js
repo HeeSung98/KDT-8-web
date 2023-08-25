@@ -2,11 +2,20 @@ const { User } = require('../models')
 const bcrypt = require('bcrypt')
 const bcryptPassword = (password) => bcrypt.hash(password, 11)
 const compare = (password, dbpass) => bcrypt.compare(password, dbpass)
+const cookieConfig = {
+  httpOnly: true,
+  maxAge: 60 * 1000, //1min
+}
 
-///////////////////////////////////////
 //GET
 const main = (req, res) => {
-  res.render('index')
+  const user = req.session.user
+  console.log('cookie:', req.cookies)
+  if (!req.cookies.isLogin) {
+    res.render('index', { isLogin: false })
+  } else {
+    res.render('index', { isLogin: true, user })
+  }
 }
 //회원가입 페이지
 const signup = (req, res) => {
@@ -27,11 +36,8 @@ const profile = (req, res) => {
     res.render('profile', { data: result })
   })
 }
-const buy = () => {}
 
-////////////////////////////////////////////////
 //POST
-//회원가입
 const post_signup = async (req, res) => {
   const { userid, name, pw } = req.body
   const hash = await bcryptPassword(pw)
@@ -47,9 +53,6 @@ const post_signup = async (req, res) => {
 }
 
 const post_signin = async (req, res) => {
-  //실습과제 - 로그인
-  //step1 아이디를 찾아서 사용자 존재 유/무 체크
-  //step2 입력된 비밀번호 암호화하여 기존 데이터와 비교
   const { userid, pw } = req.body
   console.log('req.body:', userid, pw)
   const data = await User.findOne({
@@ -59,6 +62,8 @@ const post_signin = async (req, res) => {
   if (data) {
     const compareResult = await compare(pw, data.pw)
     if (compareResult) {
+      res.cookie('isLogin', true, cookieConfig)
+      req.session.name = data.name
       res.json({ result: true, data })
     } else {
       res.json({ result: false, message: '비밀번호가 일치하지 않습니다.' })
@@ -67,21 +72,17 @@ const post_signin = async (req, res) => {
     res.json({ result: false, message: '아이디가 존재하지 않습니다.' })
   }
 }
-///////////////////////////////////////////
+
 //PATCH
 const edit_profile = (req, res) => {
-  //update( 수정될 정보를 객체형태로 입력, 수정될 곳 객체 입력  )
   const { name, pw, id } = req.body
   User.update({ name, pw }, { where: { id } }).then(() => {
     res.json({ result: true })
   })
 }
 
-/////////////////////////////////////////////
 //DELETE
-//회원탈퇴 destory()
 const destroy_profile = (req, res) => {
-  //update( 수정될 정보를 객체형태로 입력, 수정될 곳 객체 입력  )
   const { name, pw, id } = req.body
   User.destroy({ where: { id } }).then(() => {
     res.json({ result: true })
@@ -93,7 +94,6 @@ module.exports = {
   signup,
   signin,
   profile,
-  buy,
   post_signup,
   post_signin,
   edit_profile,

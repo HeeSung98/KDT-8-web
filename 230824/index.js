@@ -2,12 +2,26 @@ const express = require('express')
 const db = require('./models')
 const app = express()
 const PORT = 8080
+const cookie = require('cookie-parser')
+const session = require('express-session')
 
 console.log(process.env.NODE_ENV)
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(cookie())
+app.use(
+  session({
+    secret: 'mySession',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      httpOnly: true,
+      maxAge: 60 * 1000,
+    },
+  })
+)
 
 //router 분리
 const router = require('./routes/main')
