@@ -82,8 +82,12 @@
         data,
       })
         .then((res) => {
-          console.log('res: ', res)
-          location.href = './'
+          console.log('res: ', res.data)
+          if (!res) {
+            alert('중복된 아이디입니다.')
+          } else {
+            location.href = './'
+          }
         })
         .catch((err) => {
           console.log('err: ', err)

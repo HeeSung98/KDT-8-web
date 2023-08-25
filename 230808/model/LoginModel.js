@@ -10,7 +10,9 @@ exports.signup = (id, name, pw, callback) => {
   console.log('model signup')
   const sql = `insert into user (id, name, pw) values ('${id}','${name}', '${pw}')`
   conn.query(sql, (err, rows) => {
-    if (err) throw err
+    if (err) {
+      callback(false)
+    }
     callback(rows)
   })
 }

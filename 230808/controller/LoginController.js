@@ -13,7 +13,7 @@ exports.signupPost = (req, res) => {
   console.log(data)
   Login.signup(data.id, data.name, data.pw, (result) => {
     console.log(result)
-    res.render('index', { result })
+    res.render('signup', { result })
   })
 }
 

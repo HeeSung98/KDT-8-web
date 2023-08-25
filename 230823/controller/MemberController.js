@@ -12,15 +12,11 @@ exports.getSignup = (req, res) => {
   res.render('signup')
 }
 
-exports.getMember = (req, res) => {
-  res.render('member', { data: 1 })
-}
-
 // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 exports.postSignup = (req, res) => {
   const { userId, userName, userPw } = req.body
-  console.log(req.body)
+  console.log('req.body:', req.body)
   Member.signup(userId, userName, userPw, () => {
     res.json({ result: true })
   })

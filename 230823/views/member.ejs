@@ -67,7 +67,6 @@
     </fieldset>
   </body>
   <script>
-    // visitor 등록 함수
     function register() {
       console.log('register()')
 
@@ -81,25 +80,6 @@
       axios({
         method: 'POST',
         url: '/visitor/register',
-        data,
-      }).then((res) => {
-        console.log('res: ', res)
-        location.reload()
-      })
-    }
-
-    // visitor 조회 함수
-    function get(id) {
-      console.log('get()')
-
-      const data = {
-        id: id,
-      }
-      console.log(data)
-
-      axios({
-        method: 'GET',
-        url: `/visitor/get?id=${id}`,
         data,
       }).then((res) => {
         console.log('res: ', res)

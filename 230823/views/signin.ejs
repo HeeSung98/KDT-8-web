@@ -7,18 +7,28 @@
     <title>Signin</title>
   </head>
   <body>
-    <form onsubmit="signin(event)">
-      <input type="text" id="userId" placeholder="ID" /><br /><br />
-      <input type="password" id="userPw" placeholder="password" /><br /><br />
-      <button>로그인</button>
-    </form>
-    <form action="/member" method="post" id="member" style="display: none">
-      <input type="text" id="id" />
+    <fieldset style="width: 20vw">
+      <input
+        type="text"
+        id="userId"
+        placeholder="ID"
+        style="width: 19vw"
+      /><br /><br />
+      <input
+        type="password"
+        id="userPw"
+        placeholder="password"
+        style="width: 19vw"
+      /><br /><br />
+      <button type="button" onclick="signin()">로그인</button>
+    </fieldset>
+    <form action="/member" method="post" name="member" hidden>
+      <input type="text" name="id" />
     </form>
   </body>
   <script>
-    function signin(e) {
-      e.preventDefault()
+    function signin() {
+      console.log('signin()')
 
       axios({
         method: 'POST',
@@ -31,10 +41,11 @@
         console.log(res)
         if (res.data.result) {
           alert(`${res.data.userName}님 환영합니다!`)
+          const member = document.forms['member']
+          member.id.value = res.data.id
+          console.log('member.id.value:', member.id.value)
+          member.submit()
         }
-        const member = document.forms['member']
-        member.id.value = res.data.id
-        member.submit()
       })
     }
   </script>

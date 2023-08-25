@@ -20,7 +20,7 @@ exports.getLogin = (req, res) => {
 exports.postRegister = async (req, res) => {
   try {
     const { userId, userName, userPw } = req.body
-    console.log('제대로 나오고있나?', userId, userName, userPw)
+    console.log('req.body:', userId, userName, userPw)
     const hashPw = bcryption(userPw)
     const result = await User.create({
       userId,

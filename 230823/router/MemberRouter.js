@@ -10,7 +10,6 @@ router.post('/signin', controller.postSignin)
 router.get('/signup', controller.getSignup)
 router.post('/signup', controller.postSignup)
 
-router.get('/member', controller.getMember)
 router.post('/member', controller.postMember)
 
 module.exports = router
