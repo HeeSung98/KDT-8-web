@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>file upload</title>
+  </head>
+  <body>
+    <h1>동적 파일 업로드폼</h1>
+    <form onsubmit="fileUpload(event)">
+      <input type="file" id="files" multiple /><br /><br />
+      <button>업로드</button>
+    </form>
+    <div class="result"></div>
+  </body>
+
+  <script>
+    const resultBox = document.querySelector('.result')
+
+    async function fileUpload(e) {
+      e.preventDefault()
+
+      const files = document.querySelector('#files')
+      console.log(files.files)
+
+      const formData = new FormData()
+      for (var i = 0; i < files.files.length; i++) {
+        formData.append('files', files.files[i])
+      }
+
+      try {
+        const result = await axios({
+          method: 'POST',
+          url: '/upload',
+          data: formData,
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+
+        console.log('result:', result)
+        result.data.forEach((element) => {
+          const img = document.createElement('img')
+          img.src = element.location // aws의 경로는 location으로
+          img.style.width = '500px'
+          resultBox.appendChild(img)
+        })
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  </script>
+</html>

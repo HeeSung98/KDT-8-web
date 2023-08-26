@@ -8,9 +8,9 @@ exports.commentsInfo = () => {
     },
     {
       id: 2,
-      userId: 'test1',
+      userId: 'test2',
       date: '2023-08-05',
-      comment: 'ㅎㅇㅎㅇ',
+      comment: 'ㄷㄷ',
     },
   ]
 }
