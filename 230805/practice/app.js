@@ -4,10 +4,6 @@ const PORT = 8080
 
 //view
 app.set('view engine', 'ejs')
-app.set('views', './views')
-
-//static file loading
-app.use('/uploads', express.static(__dirname + '/uploads'))
 
 //encode
 app.use(express.urlencoded({ extended: true }))

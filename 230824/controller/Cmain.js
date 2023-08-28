@@ -40,6 +40,7 @@ const profile = (req, res) => {
 //----------------POST----------------
 const post_signup = async (req, res) => {
   const { userid, name, pw } = req.body
+  console.log('req.body:', req.body)
   const hash = await bcryptPassword(pw)
   User.create({
     userid,

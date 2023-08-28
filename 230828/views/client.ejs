@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>클라이언트</title>
+  </head>
+  <form id="chat">
+    <ul id="log"></ul>
+    <input type="text" placeholder="이름" id="name" /><br /><br />
+    <input type="text" placeholder="채팅" id="msg" />
+    <button type="button" onclick="msgSend()">보내기</button>
+  </form>
+  <body>
+    <script>
+      const socket = new WebSocket('ws://localhost:8080')
+
+      socket.addEventListener('open', (e) => {
+        console.log('서버에 연결되었습니다.')
+      })
+
+      socket.addEventListener('message', (e) => {
+        console.log(`${e.data}`)
+        document.querySelector('#log').innerHTML += `<li>${e.data}</li>`
+      })
+
+      socket.addEventListener('error', (e) => {
+        console.log(e)
+      })
+
+      socket.addEventListener('close', (e) => {
+        console.log('서버와 연결이 종료됨')
+      })
+
+      function msgSend() {
+        const name = document.querySelector('#name').value
+        const msg = document.querySelector('#msg').value
+        console.log(`${name}: ${msg}`)
+        socket.send(JSON.stringify({ name, msg }))
+        document.querySelector('#msg').value = ''
+        document.querySelector('#log').innerHTML += `<li>${name}: ${msg}</li>`
+      }
+    </script>
+  </body>
+</html>
