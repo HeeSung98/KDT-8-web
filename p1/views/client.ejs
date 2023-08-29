@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Socket IO</title>
+  </head>
+  <body>
+    <h1>hello world</h1>
+    <form id="chat">
+      <button type="button" onclick="hello('hello')">hello</button>
+      <button type="button" onclick="study('study')">study</button>
+      <button type="button" onclick="bye('bye')">bye</button>
+      <ul id="log"></ul>
+    </form>
+  </body>
+  <script>
+    const socket = io()
+
+    function hello(h) {
+      socket.emit('new_message', h, (res) => {
+        console.log(res)
+        document.querySelector('#log').innerHTML = `<li>${h}: ${res}</li>`
+      })
+    }
+    function study(s) {
+      socket.emit('new_message', s, (res) => {
+        console.log(res)
+        document.querySelector('#log').innerHTML = `<li>${s}: ${res}</li>`
+      })
+    }
+    function bye(b) {
+      socket.emit('new_message', b, (res) => {
+        console.log(res)
+        document.querySelector('#log').innerHTML = `<li>${b}: ${res}</li>`
+      })
+    }
+  </script>
+</html>

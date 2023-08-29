@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Socket IO</title>
+  </head>
+  <body>
+    <form id="chat">
+      <ul id="log"></ul>
+      <input type="text" placeholder="이름" id="name" /><br /><br />
+      <input type="text" placeholder="채팅" id="msg" />
+      <button type="button" onclick="msgSend()">보내기</button>
+    </form>
+  </body>
+  <script>
+    const socket = io()
+
+    function msgSend() {
+      const name = document.querySelector('#name').value
+      const msg = document.querySelector('#msg').value
+      socket.emit('new_message', { name, msg }, (res) => {
+        console.log(res)
+        document.querySelector('#msg').value = ''
+        document.querySelector(
+          '#log'
+        ).innerHTML += `<li>${res.name}: ${res.msg}</li>`
+      })
+    }
+  </script>
+</html>
