@@ -22,5 +22,4 @@ io.on('connection', (socket) => {
 
 server.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`)
-  document.querySelector('#log').innerHTML = `<li>${res.name}: ${res.msg}</li>`
 })
