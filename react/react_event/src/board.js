@@ -59,7 +59,6 @@ class Board extends Component {
     }
 
     this.setState((prevState) => ({
-      bNo: prevState.bNo,
       result: this.searchedBoardList,
     }))
 
