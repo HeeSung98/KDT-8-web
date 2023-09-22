@@ -5,23 +5,20 @@ export default function ToDo() {
 
   const appendToDo = () => {
     const toDo = document.querySelector('#toDo')
-    const tmp = toDoList
+    const toDoValue = toDo.value
 
-    tmp.push(toDo.value)
-    console.log('tmp:', tmp)
-
-    if (tmp.length > 10) {
-      alert('할 일이 너무 많습니다!!')
+    if (toDoList.length > 10) {
+      alert('할 일이 너무 많습니다!!!')
     }
 
     toDo.value = ''
-    setToDoList(tmp)
+    setToDoList([...toDoList, toDoValue])
   }
 
   const removeToDo = () => {
     const toDoCheck = document.getElementsByName('toDoCheck')
     const checkedList = []
-    const tmpToDoList = toDoList
+    let tmpToDoList = toDoList
 
     for (var i = 0; i < toDoCheck.length; i++) {
       if (toDoCheck[i].checked) {
@@ -30,11 +27,9 @@ export default function ToDo() {
     }
     console.log('checkedList:', checkedList)
     for (var j = 0; j < checkedList.length; j++) {
-      var data = checkedList[j]
-      var idx = tmpToDoList.findIndex((element) => {
-        return element == data
-      })
-      tmpToDoList.splice(idx, 1)
+      tmpToDoList = tmpToDoList.filter((todo) =>
+        todo == checkedList[j] ? null : todo
+      )
     }
 
     console.log('tmpToDoList:', tmpToDoList)
