@@ -1,11 +1,13 @@
-import { Component } from 'react'
+import React from 'react'
 
-class Board extends Component {
+class Board extends React.Component {
   constructor(props) {
     super(props)
 
     this.boardList = []
     this.searchedBoardList = []
+
+    this.myInput = React.createRef()
 
     this.state = {
       bNo: 1,
@@ -19,6 +21,12 @@ class Board extends Component {
   register() {
     const writer = document.getElementById('writer')
     const content = document.getElementById('content')
+    console.log(writer.value, content.value)
+
+    if (!writer.value && !content.value) {
+      this.myInput.current.focus()
+      return
+    }
 
     this.boardList.push({
       bNo: this.state.bNo,
@@ -69,7 +77,8 @@ class Board extends Component {
   render() {
     return (
       <>
-        작성자: <input id="writer"></input> 내용: <input id="content"></input>
+        작성자: <input id="writer" ref={this.myInput} />
+        내용: <input id="content" />
         <button onClick={this.register}>작성</button>
         <br />
         <hr></hr>

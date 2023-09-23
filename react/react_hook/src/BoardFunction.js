@@ -1,14 +1,20 @@
-import { useState } from 'react'
+import { useState, React, useRef } from 'react'
 
 export default function BoardFunction() {
   const [boardList, setBoardList] = useState([])
   const [searchedBoardList, setSearchedBoardList] = useState([])
   const [board, setBoard] = useState([])
   const [bNo, setBNo] = useState(1)
+  const inputRef = useRef()
 
   const register = () => {
     const writer = document.getElementById('writer')
     const content = document.getElementById('content')
+
+    if (!writer.value && !content.value) {
+      inputRef.current.focus()
+      return
+    }
 
     setBNo(bNo + 1)
 
@@ -52,7 +58,8 @@ export default function BoardFunction() {
 
   return (
     <>
-      작성자: <input id="writer"></input> 내용: <input id="content"></input>
+      작성자: <input id="writer" ref={inputRef} />
+      내용: <input id="content" />
       <button onClick={register}>작성</button>
       <br />
       <hr></hr>
