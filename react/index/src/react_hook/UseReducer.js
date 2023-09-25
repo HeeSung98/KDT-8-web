@@ -7,6 +7,7 @@ const LoginPage = () => {
     isLogin: false,
     message: '',
   })
+
   return (
     <div>
       {state.isLogin ? (
