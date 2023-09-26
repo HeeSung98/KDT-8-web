@@ -1,0 +1,110 @@
+@import './utils.scss';
+
+.SassComponent {
+  display: flex;
+  .box {
+    @include box(100px);
+
+    &.red {
+      background-color: $color-red;
+    }
+    &.yellow {
+      background-color: yellow;
+    }
+    &.orange {
+      background-color: $color-oragne;
+    }
+    &.green {
+      background-color: green;
+    }
+    &.blue {
+      background-color: blue;
+    }
+    &.navy {
+      background-color: navy;
+    }
+    &.purple {
+      background-color: purple;
+    }
+  }
+}
+
+.LavaComponent {
+  &.parent {
+    position: relative;
+  }
+  &.c1 {
+    @include circle(100px);
+    background-color: red;
+  }
+  &.c2 {
+    @include circle(100px);
+    background-color: white;
+    left: 20px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+  }
+  &.c3 {
+    @include circle(100px);
+    background-color: black;
+    top: 7px;
+    width: 25px;
+    height: 25px;
+  }
+  &.c4 {
+    @include circle(100px);
+    background-color: green;
+    left: 60px;
+  }
+  &.c5 {
+    @include circle(100px);
+    background-color: blue;
+    left: 50px;
+    top: 50px;
+  }
+  &.c6 {
+    @include circle(100px);
+    background-color: navy;
+    left: 50px;
+  }
+  &.c7 {
+    @include circle(100px);
+    background-color: purple;
+    left: 50px;
+  }
+}
+
+.AniComponent {
+  @include anicircle(50px);
+  &.c1 {
+    @include ani(10px, 'test1');
+    background-color: $color-pink;
+    position: relative;
+    animation-name: test1;
+    animation-duration: 3s;
+    animation-iteration-count: 6;
+    animation-timing-function: ease;
+    animation-delay: 1s;
+  }
+  &.c2 {
+    @include ani(20px, 'test2');
+    background-color: $color-yellow;
+    position: relative;
+    animation-name: test2;
+    animation-duration: 3s;
+    animation-iteration-count: 6;
+    animation-timing-function: ease;
+    animation-delay: 1s;
+  }
+  &.c3 {
+    @include ani(30px, 'test3');
+    background-color: $color-green;
+    position: relative;
+    animation-name: test3;
+    animation-duration: 3s;
+    animation-iteration-count: 6;
+    animation-timing-function: ease;
+    animation-delay: 1s;
+  }
+}

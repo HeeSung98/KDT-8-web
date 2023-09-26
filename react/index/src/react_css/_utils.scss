@@ -1,0 +1,49 @@
+$color-red: rgb(186, 34, 34);
+$color-oragne: rgb(225, 181, 99);
+$color-pink: rgb(201, 153, 161);
+$color-yellow: rgb(217, 217, 112);
+$color-green: rgb(79, 208, 79);
+
+@mixin box($size) {
+  width: $size;
+  height: $size;
+  border: 1px solid black;
+}
+
+@mixin circle($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50px;
+  position: absolute;
+}
+
+@mixin anicircle($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50px;
+}
+
+@mixin ani($range, $act) {
+  @keyframes #{$act} {
+    0% {
+      left: 0px;
+      top: 0px;
+    }
+    25% {
+      left: $range;
+      top: 0px;
+    }
+    50% {
+      left: $range;
+      top: $range;
+    }
+    75% {
+      left: 0px;
+      top: $range;
+    }
+    100% {
+      left: 0px;
+      top: 0px;
+    }
+  }
+}
