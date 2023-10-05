@@ -1,9 +1,9 @@
-import UseEffectAxios from './UseEffectAxios'
+import UseEffect from './UseEffect'
 
 function App() {
   return (
     <div>
-      <UseEffectAxios />
+      <UseEffect />
     </div>
   )
 }
