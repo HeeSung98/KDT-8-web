@@ -1,15 +1,19 @@
-// import React from 'react'
-// import ReactDOM from 'react-dom/client'
-// import App from './react_context/App'
-import { createElement } from 'react'
-import { createStore } from 'redux'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './react_redux/App'
+// import { createElement } from 'react'
+// import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import Store from './react_redux/store/todo'
 
-// const root = ReactDOM.createRoot(document.getElementById('root'))
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// )
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
+  <React.StrictMode>
+    <Provider store={Store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+)
 
 // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
@@ -51,50 +55,50 @@ import { createStore } from 'redux'
 
 // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
-const todo = document.querySelector('#todo')
-const append = document.querySelector('#append')
-const todoList = document.querySelector('#todoList')
+// const todo = document.querySelector('#todo')
+// const append = document.querySelector('#append')
+// const todoList = document.querySelector('#todoList')
 
-const todoReducer = (state = [], action) => {
-  switch (action.type) {
-    case 'append':
-      state.push(action.value)
-      return state
-    case 'remove':
-      state = state.filter((element, idx) => {
-        if (action.value !== idx) {
-          console.log(element)
-          return element
-        }
-      })
-      console.log('야야', state)
-      return state
-    default:
-      return state
-  }
-}
+// const todoReducer = (state = [], action) => {
+//   switch (action.type) {
+//     case 'append':
+//       state.push(action.value)
+//       return state
+//     case 'remove':
+//       state = state.filter((element, idx) => {
+//         if (action.value !== idx) {
+//           console.log(element)
+//           return element
+//         }
+//       })
+//       console.log('야야', state)
+//       return state
+//     default:
+//       return state
+//   }
+// }
 
-const todoStore = createStore(todoReducer)
-todoStore.subscribe(() => {
-  console.log('getState():', todoStore.getState())
-  todoList.innerHTML = ''
+// const todoStore = createStore(todoReducer)
+// todoStore.subscribe(() => {
+//   console.log('getState():', todoStore.getState())
+//   todoList.innerHTML = ''
 
-  todoStore.getState().map((element, idx) => {
-    const li = document.createElement('li')
-    li.textContent = element
-    const button = document.createElement('button')
-    button.innerText = '삭제'
-    button.addEventListener('click', () => remove(idx))
-    li.appendChild(button)
-    return todoList.appendChild(li)
-  })
-})
+//   todoStore.getState().map((element, idx) => {
+//     const li = document.createElement('li')
+//     li.textContent = element
+//     const button = document.createElement('button')
+//     button.innerText = '삭제'
+//     button.addEventListener('click', () => remove(idx))
+//     li.appendChild(button)
+//     return todoList.appendChild(li)
+//   })
+// })
 
-append.addEventListener('click', () => {
-  todoStore.dispatch({ type: 'append', value: todo.value })
-  todo.value = ''
-})
+// append.addEventListener('click', () => {
+//   todoStore.dispatch({ type: 'append', value: todo.value })
+//   todo.value = ''
+// })
 
-function remove(idx) {
-  todoStore.dispatch({ type: 'remove', value: idx })
-}
+// function remove(idx) {
+//   todoStore.dispatch({ type: 'remove', value: idx })
+// }
