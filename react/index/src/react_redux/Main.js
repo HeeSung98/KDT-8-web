@@ -8,8 +8,7 @@ export default function Main() {
 
   const todos = useSelector((state) => state)
 
-  const onSubmit = (e) => {
-    e.preventDefault()
+  const add = () => {
     dispatch({ type: APPEND_TODO, text })
     setText('')
   }
@@ -22,10 +21,14 @@ export default function Main() {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button style={{ margin: 10 }} id="append">
+      <button style={{ margin: 10 }} id="append" onClick={add}>
         추가
       </button>
-      <ul id="todoList"></ul>
+      <ul id="todoList">
+        {todos.map((element, idx) => {
+          return <li key={idx}>{element}</li>
+        })}
+      </ul>
     </>
   )
 }

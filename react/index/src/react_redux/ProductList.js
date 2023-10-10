@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import CartContext from './store/cart-context';
+import { useDispatch } from 'react-redux';
+import { ADD_CART } from './store/cart';
 
 export default function ProductList() {
     const products = [
@@ -20,10 +20,11 @@ export default function ProductList() {
         },
     ];
 
-    const { cart, setCart } = useContext(CartContext);
+    const dispatch = useDispatch();
 
     const addProduct = (product) => {
-        setCart([...cart, product]);
+        //이 함수에서 product는 위에 있는 products 배열의 객체 하나
+        dispatch({ type: ADD_CART, product });
     };
 
     return (

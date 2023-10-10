@@ -7,12 +7,15 @@ const todoReducer = (state = [], action) => {
   switch (action.type) {
     case 'append':
       state.push(action.value)
+      console.log('action.value:', action.value)
       return state
     case 'remove':
       state = state.filter((element, idx) => {
         if (action.value !== idx) {
           console.log(element)
           return element
+        } else {
+          return null
         }
       })
       console.log('야야', state)

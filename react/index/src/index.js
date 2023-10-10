@@ -1,17 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './react_redux/App'
+// import App from './react_redux/App'
 // import { createElement } from 'react'
 // import { createStore } from 'redux'
+import App from './react_context/App'
 import { Provider } from 'react-redux'
 import Store from './react_redux/store/todo'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <Provider store={Store}>
-      <App />
-    </Provider>
+    {/* <Provider store={Store}> */}
+    <App />
+    {/* </Provider> */}
   </React.StrictMode>
 )
 
