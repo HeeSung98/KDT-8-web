@@ -16,7 +16,7 @@ const counterSlice = createSlice({
     },
     decrement5(state, action) {
       console.log(action)
-      const { ten, five } = action.payload
+      const { ten } = action.payload
       state.counter -= ten
     },
   },
