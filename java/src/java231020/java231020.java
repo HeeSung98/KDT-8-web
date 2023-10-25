@@ -1,3 +1,5 @@
+package java231020;
+
 import java.util.Scanner;
 
 public class java231020 {
