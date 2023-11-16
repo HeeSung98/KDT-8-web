@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form action="/practice9" method="post" style="margin-right: 20px;" id="info">
+        <h3>폼 전송 - 실습</h3>
+        이름 : <input type="text" name="name">
+        <br>
+        성별 : <input type="radio" name="sex" value="male">남자 <input type="radio" name="sex" value="female">여자
+        <br>
+        생년월일 : <select name="year"><option value="2023">2023</option></select> 년
+        <select name="month"><option value="11">11</option></select> 월
+        <select name="day"><option value="1">1</option></select> 일
+        <br>
+        관심사 : <input type="checkbox" name="hobby" value="travel"> 여행
+        <input type="checkbox" name="hobby" value="fashion"> 패션
+        <input type="checkbox" name="hobby" value="food"> 음식
+        <br>
+        <button type="button" onclick="axiosVO();">전송</button>
+    </form>
+</body>
+<script>
+    function axiosVO() {
+        let form = document.getElementById('info');
+        axios.post(`/practice9`, {name: form.name.value, sex: form.sex.value, year: form.year.year, month: form.month.value, day: form.day.value, hobby: form.hobby.checked})
+            .then((res)=>{
+                console.log( res );
+                console.log( 'result : ', res.data  );
+            });
+    }</script>
+</html>

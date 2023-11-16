@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mybatis.mapper.BoardMapper">
+    <select id="getAll" resultType="com.example.mybatis.domain.Board">
+        SELECT board.* FROM board
+    </select>
+
+    <select id="searchBoard" parameterType="String" resultType="com.example.mybatis.domain.Board">
+        SELECT * from board
+        <where>
+            <if test="word != ''">
+                And title like '%${word}%'
+            </if>
+        </where>
+    </select>
+
+    <select id="insertBoard" resultType="com.example.mybatis.domain.Board">
+        INSERT INTO board(title, writer, content) values (#{title}, #{content}, #{writer})
+    </select>
+
+    <select id="updateBoard" resultType="com.example.mybatis.domain.Board">
+        UPDATE board set title = #{title}, content = #{content} where id = #{id}
+    </select>
+</mapper>
